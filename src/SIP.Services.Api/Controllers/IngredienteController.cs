@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DevWebReceitas.Application.Dtos;
+using DevWebReceitas.Application.Dtos.Indrediente;
 using DevWebReceitas.Application.Interfaces;
 using DevWebReceitas.Domain.Filters;
 using DevWebReceitas.Services.Api.Errors;
@@ -24,17 +24,12 @@ namespace DevWebReceitas.Services.Api.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public IActionResult Create([FromBody] IngredienteDto item)
+        public IActionResult Create([FromBody] IngredienteInsertDto item)
         {
             try
             {
-                _service.Create(item);
-
-                return CreatedAtAction(nameof(Find), new { id = item.Id }, item);
-            }
-            catch (ArgumentException ex)
-            {
-                return NotFound(new Error(ex));
+                var id =_service.Create(item);
+                return CreatedAtAction(nameof(Find), new { id }, item);
             }
             catch (Exception ex)
             {
@@ -101,7 +96,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(IEnumerable<IngredienteDto>), 200)]
+        [ProducesResponseType(typeof(IngredienteDto), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         [Consumes("application/json")]

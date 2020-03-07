@@ -1,7 +1,6 @@
-﻿
-using System;
+﻿using System;
 
-namespace DevWebReceitas.Application.Dtos
+namespace DevWebReceitas.Application.Dtos.Indrediente
 {
     public class IngredienteDto
     {

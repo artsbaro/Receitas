@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevWebReceitas.Application.Dtos.Indrediente;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace DevWebReceitas.Application.Dtos

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DevWebReceitas.Application.Dtos;
+using DevWebReceitas.Application.Dtos.Indrediente;
 using DevWebReceitas.Application.Interfaces;
 using DevWebReceitas.Application.Mappers.Default;
 using DevWebReceitas.Domain.Entities;
@@ -18,9 +18,12 @@ namespace DevWebReceitas.Application.Services
             _service = service;
         }
 
-        public void Create(IngredienteDto entity)
+        public Guid Create(IngredienteInsertDto entity)
         {
-            _service.Create(TypeConverter.ConvertTo<Ingrediente>(entity));
+            var objPersistencia = TypeConverter.ConvertTo<Ingrediente>(entity);
+            objPersistencia.Id = Guid.NewGuid();
+            _service.Create(objPersistencia);
+            return objPersistencia.Id;
         }
 
         public IEnumerable<IngredienteDto> List(IngredienteFilter filter)
