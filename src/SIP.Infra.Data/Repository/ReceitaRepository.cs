@@ -24,20 +24,31 @@ namespace DevWebReceitas.Infra.Data.Repository
                 commandType: CommandType.StoredProcedure,
                 param: new
                 {
-                    entity.Id,                    
+                    entity.Id,
                     entity.Titulo,
                     entity.Descricao,
                     entity.ModoPreparo,
                     entity.Ativo,
                     entity.DataCadastro
-                },
-                transaction: transaction
+                }
             );
         }
 
         public void Create(Receita entity)
         {
-            CreateAsync(entity).ConfigureAwait(false);
+            Connection.Execute(
+                "SProc_Receita_Insert",
+                commandType: CommandType.StoredProcedure,
+                param: new
+                {
+                    entity.Id,
+                    entity.Titulo,
+                    entity.Descricao,
+                    entity.ModoPreparo,
+                    entity.Ativo,
+                    entity.DataCadastro
+                }
+            );
         }
 
         public async Task RemoveAsync(Guid id)
@@ -48,20 +59,18 @@ namespace DevWebReceitas.Infra.Data.Repository
                 param: new
                 {
                     Id = id
-                },
-                transaction: transaction
+                }
             );
         }
 
         public void Remove(Guid id)
         {
-            RemoveAsync(id).ConfigureAwait(false);  
+            RemoveAsync(id).ConfigureAwait(false);
         }
 
         public Task<Receita> FindByIdAsync(Guid id)
         {
             var obj = Connection.QuerySingleOrDefault("SProc_Receita_GetById",
-                transaction: transaction,
                 commandType: CommandType.StoredProcedure,
                 param: new { Id = id });
 
@@ -80,8 +89,7 @@ namespace DevWebReceitas.Infra.Data.Repository
         {
             var result = Connection.Query(
                "SProc_Receita_GetAll",
-               commandType: CommandType.StoredProcedure,
-               transaction: transaction);
+               commandType: CommandType.StoredProcedure);
 
             return Task.Run(() => MapFromDB(result));
         }
@@ -104,8 +112,7 @@ namespace DevWebReceitas.Infra.Data.Repository
                     entity.ModoPreparo,
                     entity.Ativo,
                     entity.DataCadastro
-                },
-                transaction: transaction
+                }
             );
         }
 

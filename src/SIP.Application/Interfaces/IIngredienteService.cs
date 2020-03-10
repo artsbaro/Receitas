@@ -1,4 +1,4 @@
-﻿using DevWebReceitas.Application.Dtos.Indrediente;
+﻿using DevWebReceitas.Application.Dtos.Ingrediente;
 using DevWebReceitas.Domain.Filters;
 using System;
 using System.Collections.Generic;

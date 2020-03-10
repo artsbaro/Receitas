@@ -38,7 +38,7 @@ namespace DevWebReceitas.Services.Api
             services.AddDistributedRedisCache(options =>
             {
                 options.Configuration = Configuration.GetConnectionString("RedisConnection");
-                options.InstanceName = "Municipios:";
+                options.InstanceName = "Ingredientes:";
             });
 
             services
@@ -85,7 +85,6 @@ namespace DevWebReceitas.Services.Api
 
         private static void RegisterServices(IServiceCollection services)
         {
-            // Adding dependencies from another layers (isolated from Presentation)
             NativeInjectorBootStrapper.RegisterServices(services);
         }
     }

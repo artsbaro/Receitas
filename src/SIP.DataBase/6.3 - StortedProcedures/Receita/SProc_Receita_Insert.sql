@@ -5,8 +5,7 @@
     @Descricao varchar(256),
     @ModoPreparo varchar(MAX),
 	@Ativo bit ,
-	@DataCadastro datetime ,
-    @DataUltimaAlteracao DATETIME 
+	@DataCadastro datetime 
 )
 As
 
@@ -16,13 +15,11 @@ INSERT INTO [dbo].[tblReceitas]
                 [Descricao] ,
                 [ModoPreparo] ,
 	            [Ativo],
-	            [DataCadastro] ,
-                [DataUltimaAlteracao]  )
+	            [DataCadastro] )
      VALUES
            (    @Id ,
                 @Titulo ,
                 @Descricao ,
                 @ModoPreparo ,
 	            @Ativo ,
-	            @DataCadastro ,
-                @DataUltimaAlteracao )
+	            @DataCadastro )

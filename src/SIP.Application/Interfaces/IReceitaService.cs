@@ -7,7 +7,7 @@ namespace DevWebReceitas.Application.Interfaces
 {
     public interface IReceitaService
     {
-        void Create(ReceitaDto entity);
+        Guid Create(ReceitaInsertDto entity);
         void Remove(Guid id);
         ReceitaDto FindById(Guid id);
         IEnumerable<ReceitaDto> List(ReceitaFilter filter);

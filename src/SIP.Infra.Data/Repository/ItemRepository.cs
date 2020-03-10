@@ -21,14 +21,34 @@ namespace DevWebReceitas.Infra.Data.Repository
             await Connection.ExecuteAsync(
                 "SProc_Item_Insert",
                 commandType: CommandType.StoredProcedure,
-                param: entity,
-                transaction: transaction
+                param: new {
+                    entity.Id,
+                    entity.Quantidade,
+                    IngredienteId = entity.Ingrediente.Id,
+                    entity.ReceitaId,
+                    entity.Obs,
+                    entity.Ativo,
+                    entity.DataCadastro
+                }
             );
         }
 
         public void Create(Item entity)
         {
-            CreateAsync(entity).Wait();
+            Connection.Execute(
+                "SProc_Item_Insert",
+                commandType: CommandType.StoredProcedure,
+                param: new
+                {
+                    entity.Id,
+                    entity.Quantidade,
+                    IngredienteId = entity.Ingrediente.Id,
+                    entity.ReceitaId,
+                    entity.Obs,
+                    entity.Ativo,
+                    entity.DataCadastro
+                }
+            );
         }
 
 
@@ -36,8 +56,7 @@ namespace DevWebReceitas.Infra.Data.Repository
         {
             return Connection.QueryFirstOrDefaultAsync<Item>(
                "SProc_Item_GetById",
-               commandType: CommandType.StoredProcedure,
-               transaction: transaction
+               commandType: CommandType.StoredProcedure
             );
         }
 
@@ -50,8 +69,7 @@ namespace DevWebReceitas.Infra.Data.Repository
         {
             return Connection.QueryAsync<Item>(
                "SProc_Item_GetAll",
-               commandType: CommandType.StoredProcedure,
-               transaction: transaction
+               commandType: CommandType.StoredProcedure
            );
         }
 
@@ -68,8 +86,7 @@ namespace DevWebReceitas.Infra.Data.Repository
                 param: new
                 {
                     Id = id
-                },
-                transaction: transaction
+                }
             );
         }
 
@@ -83,8 +100,7 @@ namespace DevWebReceitas.Infra.Data.Repository
             await Connection.ExecuteAsync(
                 "SProc_Ingrediente_Update",
                 commandType: CommandType.StoredProcedure,
-                param: entity,
-                transaction: transaction
+                param: entity
             );
         }
 
@@ -106,8 +122,7 @@ namespace DevWebReceitas.Infra.Data.Repository
                param: new
                {
                    Id = id
-               },
-               transaction: transaction
+               }
            );
         }
 
@@ -116,8 +131,7 @@ namespace DevWebReceitas.Infra.Data.Repository
             return await Connection.QueryAsync<Item>(
                "SProc_Item_GetByReceitaId",
                commandType: CommandType.StoredProcedure,
-               param: new { ReceitaId = id },
-               transaction: transaction
+               param: new { ReceitaId = id }
             );
         }
 

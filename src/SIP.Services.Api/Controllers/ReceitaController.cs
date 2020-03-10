@@ -21,19 +21,14 @@ namespace DevWebReceitas.Services.Api.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
+        [ProducesResponseType(201)]
         [ProducesResponseType(500)]
-        public IActionResult Create([FromBody] ReceitaDto item)
+        public IActionResult Create([FromBody] ReceitaInsertDto item)
         {
             try
             {
-                _service.Create(item);
-                return Ok(item.Id);
-            }
-            catch (ArgumentException ex)
-            {
-                return NotFound(new Error(ex));
+                var id = _service.Create(item);
+                return CreatedAtAction(nameof(Find), new { id }, item);
             }
             catch (Exception ex)
             {
@@ -43,7 +38,6 @@ namespace DevWebReceitas.Services.Api.Controllers
 
         [HttpPut]
         [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public IActionResult Update([FromBody] ReceitaDto item)
         {
@@ -51,10 +45,6 @@ namespace DevWebReceitas.Services.Api.Controllers
             {
                 _service.Update(item);
                 return Ok();
-            }
-            catch (ArgumentException ex)
-            {
-                return NotFound(new Error(ex));
             }
             catch (Exception ex)
             {
@@ -64,7 +54,6 @@ namespace DevWebReceitas.Services.Api.Controllers
 
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public IActionResult Remove(Guid id)
         {
@@ -72,10 +61,6 @@ namespace DevWebReceitas.Services.Api.Controllers
             {
                 _service.Remove(id);
                 return Ok();
-            }
-            catch (ArgumentException ex)
-            {
-                return NotFound(new Error(ex));
             }
             catch (Exception ex)
             {

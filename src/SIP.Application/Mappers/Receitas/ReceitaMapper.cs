@@ -1,6 +1,6 @@
 ﻿using DevWebReceitas.Application.Dtos;
-using DevWebReceitas.Application.Mappers.Default;
 using DevWebReceitas.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,39 +8,26 @@ namespace DevWebReceitas.Application.Mappers.Receitas
 {
     public class ReceitaMapper : IReceitaMapper
     {
-        public Receita Map(ReceitaDto source)
+        public Receita Map(ReceitaInsertDto source)
         {
-            return TypeConverter.ConvertTo<Receita>(source);
+            //return TypeConverter.ConvertTo<Receita>(source);
 
-            //return new Servidor
-            //{
-            //    DataNascimento = source.DataNascimento,
-            //    NomeMae = source.NomeMae,
-            //    Nome = source.Nome,
-            //    NomePai = source.NomePai,
-            //    NomeSocial = source.NomeSocial,
-            //    Sexo = new Sexo { Id = source.Sexo.Id, Descricao = source.Sexo.Descricao },
-            //    EstadoCivil = new EstadoCivil { Id = source.EstadoCivil.Id },
-            //    FatorRH = new FatorRH { Id = source.FatorRH.Id },
-            //    RacaCor = new RacaCor { Id = source.RacaCor.Id },
-            //    TipoSanguineo = new TipoSanguineo { Id = source.TipoSanguineo.Id },
-            //    MunicipioNascimento = new MunicipioNascimento { Id = source.MunicipioNascimento.Id},
-            //    Enderecos = source.Enderecos.Select(e => new Endereco
-            //    {
-            //        Bairro = e.Bairro,
-            //        Cep = e.Cep,
-            //        Cidade = e.Cidade,
-            //        Logradouro = e.Logradouro,
-            //        Complemento = e.Complemento,
-            //        Numero = e.Numero,
-            //        ServidorId = e.ServidorId,
-            //        TipoLogradouro = e.TipoLogradouro,
-            //        Uf = e.Uf
-            //    })
-            //};
+            return new Receita
+            {
+                Titulo = source.Titulo,
+                Descricao = source.Descricao,
+                ModoPreparo = source.ModoPreparo,
+                Itens = source.Itens.Select(x => new Item
+                {
+                    Id = Guid.NewGuid(),
+                    Quantidade = x.Quantidade,
+                    Obs = x.Obs,
+                    Ingrediente = new Ingrediente { Id = x.IngredienteId }
+                })
+            };
         }
 
-        public IEnumerable<Receita> Map(IEnumerable<ReceitaDto> source)
+        public IEnumerable<Receita> Map(IEnumerable<ReceitaInsertDto> source)
         {
             return source.Select(x => Map(x));
         }

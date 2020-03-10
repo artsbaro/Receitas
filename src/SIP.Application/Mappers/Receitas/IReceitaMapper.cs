@@ -3,7 +3,7 @@ using DevWebReceitas.Domain.Entities;
 
 namespace DevWebReceitas.Application.Mappers.Receitas
 {
-    public interface IReceitaMapper : IMapper<ReceitaDto, Receita>
+    public interface IReceitaMapper : IMapper<ReceitaInsertDto, Receita>
     {
     }
 }

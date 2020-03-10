@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DevWebReceitas.Application.Dtos;
 using DevWebReceitas.Application.Interfaces;
+using DevWebReceitas.Application.Mappers.Default;
 using DevWebReceitas.Application.Mappers.Receitas;
+using DevWebReceitas.Domain.Entities;
 using DevWebReceitas.Domain.Filters;
 using DevWebReceitas.Domain.Services.Interfaces;
 
@@ -11,8 +14,8 @@ namespace DevWebReceitas.Application.Services
     public class ReceitaService : IReceitaService, IDisposable
     {
         private readonly IReceitaDomainService _service;
-        private readonly IReceitaMapper _servidorMapper;
-        private readonly IReceitaDtoMapper _servidorDtoMapper;
+        private readonly IReceitaMapper _receitaMapper;
+        private readonly IReceitaDtoMapper _receitaDtoMapper;
 
 
         public ReceitaService(IReceitaDomainService service,
@@ -20,19 +23,37 @@ namespace DevWebReceitas.Application.Services
                                 IReceitaDtoMapper servidorDtoMapper)
         {
             _service = service;
-            _servidorMapper = servidorMapper;
-            _servidorDtoMapper = servidorDtoMapper;
+            _receitaMapper = servidorMapper;
+            _receitaDtoMapper = servidorDtoMapper;
         }
 
-        public void Create(ReceitaDto entity)
+        public Guid Create(ReceitaInsertDto dto)
         {
-            _service.Create(_servidorMapper.Map(entity));
+            var id = Guid.NewGuid();
+            var objPersistencia = new Receita
+            {
+                Id = id,
+                Titulo = dto.Titulo,
+                Descricao = dto.Descricao,
+                ModoPreparo = dto.ModoPreparo,
+                Itens = dto.Itens.Select(x => new Item
+                {
+                    Id = Guid.NewGuid(),
+                    ReceitaId = id,
+                    Quantidade = x.Quantidade,
+                    Obs = x.Obs,
+                    Ingrediente = new Ingrediente { Id = x.IngredienteId }
+                })
+            }; 
+
+            _service.Create(objPersistencia);
+            return objPersistencia.Id;
         }
 
         public IEnumerable<ReceitaDto> List(ReceitaFilter filter)
         {
             var list = _service.List(filter);
-            return _servidorDtoMapper.Map(list);
+            return _receitaDtoMapper.Map(list);
         }
 
         public void Remove(Guid id)
@@ -42,13 +63,16 @@ namespace DevWebReceitas.Application.Services
 
         public ReceitaDto FindById(Guid id)
         {
-            var servidor = _service.FindById(id);
-            return _servidorDtoMapper.Map(servidor);
+            var receita = _service.FindById(id);
+            if (receita == null)
+                throw new ArgumentException("Receita não encontrada");
+
+            return _receitaDtoMapper.Map(receita);
         }
 
         public void Update(ReceitaDto entity)
         {
-            _service.Update(_servidorMapper.Map(entity));
+            _service.Update(TypeConverter.ConvertTo<Receita>(entity));
         }
 
         public void Dispose()

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DevWebReceitas.Application.Dtos.Indrediente;
+using DevWebReceitas.Application.Dtos.Ingrediente;
 using DevWebReceitas.Application.Interfaces;
 using DevWebReceitas.Domain.Filters;
 using DevWebReceitas.Services.Api.Errors;

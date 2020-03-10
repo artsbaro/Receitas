@@ -6,6 +6,7 @@ using DevWebReceitas.Domain.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 
 namespace DevWebReceitas.Domain.Services
 {
@@ -24,22 +25,14 @@ namespace DevWebReceitas.Domain.Services
 
         public void Create(Receita entity)
         {
-            using (var trans = _uow.Begin(_receitaRepository, _itemRepository))
+            using (var trans = new TransactionScope())
             {
-                try
+                _receitaRepository.Create(entity);
+                foreach (var item in entity.Itens ?? Enumerable.Empty<Item>())
                 {
-                    _receitaRepository.Create(entity);
-                    foreach (var item in entity.Itens ?? Enumerable.Empty<Item>())
-                    {
-                        _itemRepository.Create(item);
-                    }
-                    trans.Commit();
+                    _itemRepository.Create(item);
                 }
-                catch
-                {
-                    trans.Rollback();
-                    throw;
-                }
+                trans.Complete();
             }
         }
 
@@ -56,40 +49,20 @@ namespace DevWebReceitas.Domain.Services
 
         public void Remove(Guid id)
         {
-            using (var trans = _uow.Begin(_receitaRepository, _itemRepository))
-            {
-                try
-                {
-                    _receitaRepository.Remove(id);
-                    trans.Commit();
-                }
-                catch
-                {
-                    trans.Rollback();
-                    throw;
-                }
-            }
+            _receitaRepository.Remove(id);
         }
 
         public void Update(Receita entity)
         {
             entity.DataCadastro = DateTime.Now;
-            using (var trans = _uow.Begin(_receitaRepository, _itemRepository))
+            using (var trans = new TransactionScope())
             {
-                try
+                _receitaRepository.Update(entity);
+                foreach (var item in entity.Itens ?? Enumerable.Empty<Item>())
                 {
-                    _receitaRepository.Update(entity);
-                    foreach (var item in entity.Itens ?? Enumerable.Empty<Item>())
-                    {
-                        _itemRepository.Create(item);
-                    }
-                    trans.Commit();
+                    _itemRepository.Create(item);
                 }
-                catch
-                {
-                    trans.Rollback();
-                    throw;
-                }
+                trans.Complete();
             }
         }
     }
