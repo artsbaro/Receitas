@@ -1,4 +1,5 @@
-﻿using DevWebReceitas.Application.Dtos.Item;
+﻿using DevWebReceitas.Application.Dtos.Categoria;
+using DevWebReceitas.Application.Dtos.Item;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,9 @@ namespace DevWebReceitas.Application.Dtos
     public class ReceitaDto
     {
         public Guid Id { get; set; }
+
+        [Required(ErrorMessage = "Categoria não preenchido.")]
+        public CategoriaDto Categoria { get; set; }
 
         [Required(ErrorMessage = "Titulo não preenchido.")]
         [MinLength(3, ErrorMessage = "Titulo deve ter mais que 3 caracteres")]

@@ -1,4 +1,5 @@
 ﻿using DevWebReceitas.Application.Dtos.Item;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +22,10 @@ namespace DevWebReceitas.Application.Dtos
         [MinLength(3, ErrorMessage = "Modo de Preparo deve ter mais que 3 caracteres")]
         [DisplayName("Modo de Preparo")]
         public string ModoPreparo { get; set; }
+
+        [Required(ErrorMessage = "CategoriaId não preenchido.")]
+        public Guid CategoriaId { get; set; }
+
         public IEnumerable<ItemInsertDto> Itens { get; set; }
     }
 }

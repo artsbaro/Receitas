@@ -1,4 +1,5 @@
 ﻿using System;
+using DevWebReceitas.Application.Dtos.Categoria;
 using DevWebReceitas.Application.Dtos.Ingrediente;
 
 namespace DevWebReceitas.Application.Dtos.Item
@@ -7,7 +8,7 @@ namespace DevWebReceitas.Application.Dtos.Item
     {
         public Guid Id { get; set; }
         public decimal Quantidade { get; set; }
-        public IngredienteDto Ingrediente { get; set; }
+        public CategoriaDto Ingrediente { get; set; }
         public string Obs { get; set; }
     }
 }

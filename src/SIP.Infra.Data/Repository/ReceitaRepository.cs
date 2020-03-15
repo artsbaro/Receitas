@@ -27,6 +27,7 @@ namespace DevWebReceitas.Infra.Data.Repository
                     entity.Titulo,
                     entity.Descricao,
                     entity.ModoPreparo,
+                    CategoriaId = entity.Categoria.Id,
                     entity.Ativo,
                     entity.DataCadastro
                 }
@@ -77,6 +78,7 @@ namespace DevWebReceitas.Infra.Data.Repository
                     entity.Titulo,
                     entity.Descricao,
                     entity.ModoPreparo,
+                    CategoriaId = entity.Categoria.Id,
                     entity.Ativo,
                     entity.DataCadastro
                 }
@@ -92,6 +94,7 @@ namespace DevWebReceitas.Infra.Data.Repository
                 Titulo = obj.Titulo,
                 Descricao = obj.Descricao,
                 ModoPreparo = obj.ModoPreparo,
+                Categoria = new Categoria { Id = obj.CategoriaId, Nome = obj.CategoriaNome},
                 Ativo = obj.Ativo,
                 DataCadastro = obj.DataCadastro,
             };

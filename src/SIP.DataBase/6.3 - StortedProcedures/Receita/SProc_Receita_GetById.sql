@@ -5,13 +5,16 @@
 As  
   
  SELECT 
-    [Id] 
-    ,[Titulo] 
-    ,[Descricao] 
-    ,[ModoPreparo] 
-	,[Ativo] 
-	,[DataCadastro] 
-    ,[DataUltimaAlteracao] 
- FROM dbo.tblReceitas (nolock) 
- Where Id = @Id  
+    R.[Id] 
+    ,R.[Titulo] 
+    ,R.[Descricao] 
+    ,R.[ModoPreparo] 
+    ,R.[CategoriaId]
+    ,C.[Nome] as CategoriaNome
+	,R.[Ativo] 
+	,R.[DataCadastro] 
+    ,R.[DataUltimaAlteracao] 
+ FROM dbo.tblReceitas R (nolock) 
+ Join dbo.tblCategorias C (nolock) On C.Id = R.CategoriaId
+ Where R.Id = @Id  
  

@@ -36,6 +36,7 @@
   <ItemGroup>
     <Folder Include="Context\" />
     <Folder Include="Map\" />
+    <Folder Include="UoW\" />
   </ItemGroup>
 
   <ItemGroup>

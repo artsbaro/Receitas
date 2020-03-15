@@ -64,6 +64,7 @@
     <Folder Include="6.3 - StortedProcedures\Receita" />
     <Folder Include="6.3 - StortedProcedures\Ingrediente" />
     <Folder Include="6.3 - StortedProcedures\Item" />
+    <Folder Include="6.3 - StortedProcedures\Categoria" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="6.1 - Tables\tblReceitas.sql" />
@@ -85,6 +86,12 @@
     <Build Include="6.3 - StortedProcedures\Item\SProc_Item_GetById.sql" />
     <Build Include="6.3 - StortedProcedures\Item\SProc_Item_GetByReceitaId.sql" />
     <Build Include="6.3 - StortedProcedures\Item\SProc_Item_DeleteByReceitaId.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\Sproc_Ingrediente_Delete.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Ingrediente_GetAll.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Ingrediente_GetById.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Ingrediente_Insert.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Ingrediente_Update.sql" />
+    <Build Include="6.1 - Tables\tblCategorias.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DevWebReceitas.DataBase.publish.xml" />

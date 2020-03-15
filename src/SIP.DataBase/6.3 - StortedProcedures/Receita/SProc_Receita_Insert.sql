@@ -4,6 +4,7 @@
     @Titulo varchar(150) ,
     @Descricao varchar(256),
     @ModoPreparo varchar(MAX),
+    @CategoriaId uniqueidentifier,
 	@Ativo bit ,
 	@DataCadastro datetime 
 )
@@ -14,6 +15,7 @@ INSERT INTO [dbo].[tblReceitas]
                 [Titulo],
                 [Descricao] ,
                 [ModoPreparo] ,
+                [CategoriaId] ,
 	            [Ativo],
 	            [DataCadastro] )
      VALUES
@@ -21,5 +23,6 @@ INSERT INTO [dbo].[tblReceitas]
                 @Titulo ,
                 @Descricao ,
                 @ModoPreparo ,
+                @CategoriaId,
 	            @Ativo ,
 	            @DataCadastro )

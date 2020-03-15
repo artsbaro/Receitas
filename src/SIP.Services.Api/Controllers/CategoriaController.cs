@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DevWebReceitas.Application.Dtos.Ingrediente;
+using DevWebReceitas.Application.Dtos.Categoria;
 using DevWebReceitas.Application.Interfaces;
 using DevWebReceitas.Domain.Filters;
 using DevWebReceitas.Services.Api.Errors;
@@ -11,11 +11,11 @@ namespace DevWebReceitas.Services.Api.Controllers
     [Route("api/[controller]")]
     [Produces("application/json")]
     [ApiController]
-    public class IngredienteController : ControllerBase
+    public class CategoriaController : ControllerBase
     {
-        private readonly IIngredienteService _service;
+        private readonly ICategoriaService _service;
 
-        public IngredienteController(IIngredienteService service)
+        public CategoriaController(ICategoriaService service)
         {
             _service = service;
         }
@@ -24,7 +24,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public IActionResult Create([FromBody] IngredienteInsertDto item)
+        public IActionResult Create([FromBody] CategoriaInsertDto item)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public IActionResult Update([FromBody] IngredienteDto item)
+        public IActionResult Update([FromBody] CategoriaDto item)
         {
             try
             {
@@ -80,9 +80,9 @@ namespace DevWebReceitas.Services.Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<IngredienteDto>), 200)]
+        [ProducesResponseType(typeof(IEnumerable<CategoriaDto>), 200)]
         [ProducesResponseType(500)]
-        public IActionResult Find([FromQuery] IngredienteFilter filter)
+        public IActionResult Find([FromQuery] CategoriaFilter filter)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(IngredienteDto), 200)]
+        [ProducesResponseType(typeof(CategoriaDto), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         [Consumes("application/json")]

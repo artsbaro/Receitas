@@ -16,4 +16,8 @@
     <None Remove="ValueObjects\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\UoW\" />
+  </ItemGroup>
+
 </Project>
