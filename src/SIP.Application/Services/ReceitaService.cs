@@ -19,12 +19,12 @@ namespace DevWebReceitas.Application.Services
 
 
         public ReceitaService(IReceitaDomainService service,
-                                IReceitaMapper servidorMapper,
-                                IReceitaDtoMapper servidorDtoMapper)
+                                IReceitaMapper receitaMapper,
+                                IReceitaDtoMapper receitaDtoMapper)
         {
             _service = service;
-            _receitaMapper = servidorMapper;
-            _receitaDtoMapper = servidorDtoMapper;
+            _receitaMapper = receitaMapper;
+            _receitaDtoMapper = receitaDtoMapper;
         }
 
         public Guid Create(ReceitaInsertDto dto)

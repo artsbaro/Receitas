@@ -15,9 +15,9 @@ namespace DevWebReceitas.Services.Api.Controllers
     {
         private readonly IReceitaService _service;
 
-        public ReceitaController(IReceitaService servidorService)
+        public ReceitaController(IReceitaService receitaService)
         {
-            _service = servidorService;
+            _service = receitaService;
         }
 
         [HttpPost]

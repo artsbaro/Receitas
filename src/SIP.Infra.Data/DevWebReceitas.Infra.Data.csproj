@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <Folder Include="Context\" />
+    <Folder Include="Map\" />
   </ItemGroup>
 
   <ItemGroup>

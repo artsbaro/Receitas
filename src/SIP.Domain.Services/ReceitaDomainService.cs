@@ -1,7 +1,6 @@
 ﻿using DevWebReceitas.Domain.Entities;
 using DevWebReceitas.Domain.Filters;
 using DevWebReceitas.Domain.Interfaces.Repositories;
-using DevWebReceitas.Domain.Interfaces.UoW;
 using DevWebReceitas.Domain.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -14,12 +13,10 @@ namespace DevWebReceitas.Domain.Services
     {
         private readonly IReceitaRepository _receitaRepository;
         private readonly IItemRepository _itemRepository;
-        private readonly IUnitOfWork _uow;
 
-        public ReceitaDomainService(IReceitaRepository servidorRepository, IUnitOfWork uow, IItemRepository itemRepository)
+        public ReceitaDomainService(IReceitaRepository receitaRepository, IItemRepository itemRepository)
         {
-            _receitaRepository = servidorRepository;
-            _uow = uow;
+            _receitaRepository = receitaRepository;
             _itemRepository = itemRepository;
         }
 
@@ -38,8 +35,9 @@ namespace DevWebReceitas.Domain.Services
 
         public Receita FindById(Guid id)
         {
-            var servidor = _receitaRepository.FindById(id);
-            return servidor;
+            var receita = _receitaRepository.FindById(id);
+            receita.Itens = _itemRepository.FindByReceitaId(receita.Id);
+            return receita;
         }
 
         public IEnumerable<Receita> List(ReceitaFilter filter)
@@ -54,7 +52,7 @@ namespace DevWebReceitas.Domain.Services
 
         public void Update(Receita entity)
         {
-            entity.DataCadastro = DateTime.Now;
+            entity.DataUltimaAlteracao = DateTime.Now;
             using (var trans = new TransactionScope())
             {
                 _receitaRepository.Update(entity);

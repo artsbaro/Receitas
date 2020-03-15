@@ -1,38 +1,28 @@
 ﻿using DevWebReceitas.Domain.Entities;
 using DevWebReceitas.Domain.Filters;
 using DevWebReceitas.Domain.Interfaces.Repositories;
-using DevWebReceitas.Domain.Interfaces.UoW;
 using DevWebReceitas.Domain.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Transactions;
 
 namespace DevWebReceitas.Domain.Services
 {
     public class ItemDomainService : IItemDomainService
     {
         private readonly IItemRepository _itemRepository;
-        private readonly IUnitOfWork _uow;
 
-        public ItemDomainService(IUnitOfWork uow, IItemRepository itemRepository)
+        public ItemDomainService(IItemRepository itemRepository)
         {
             _itemRepository = itemRepository;
-            _uow = uow;
         }
 
         public void Create(Item entity)
         {
-            using (var trans = _uow.Begin(_itemRepository, _itemRepository))
+            using (var trans = new TransactionScope())
             {
-                try
-                {
-                    _itemRepository.Create(entity);
-                    trans.Commit();
-                }
-                catch
-                {
-                    trans.Rollback();
-                    throw;
-                }
+                _itemRepository.Create(entity);
+                trans.Complete();
             }
         }
 
@@ -49,36 +39,20 @@ namespace DevWebReceitas.Domain.Services
 
         public void Remove(Guid id)
         {
-            using (var trans = _uow.Begin(_itemRepository))
+            using (var trans = new TransactionScope())
             {
-                try
-                {
-                    _itemRepository.Remove(id);
-                    trans.Commit();
-                }
-                catch
-                {
-                    trans.Rollback();
-                    throw;
-                }
+                _itemRepository.Remove(id);
+                trans.Complete();
             }
         }
 
         public void Update(Item entity)
         {
-            entity.DataCadastro = DateTime.Now;
-            using (var trans = _uow.Begin(_itemRepository, _itemRepository))
+            using (var trans = new TransactionScope())
             {
-                try
-                {
-                    _itemRepository.Update(entity);
-                    trans.Commit();
-                }
-                catch
-                {
-                    trans.Rollback();
-                    throw;
-                }
+                entity.DataCadastro = DateTime.Now;
+                _itemRepository.Update(entity);
+                trans.Complete();
             }
         }
 
@@ -89,18 +63,10 @@ namespace DevWebReceitas.Domain.Services
 
         public void RemoveItemByReceitaId(Guid id)
         {
-            using (var trans = _uow.Begin(_itemRepository))
+            using (var trans = new TransactionScope())
             {
-                try
-                {
-                    _itemRepository.RemoveItemByReceitaId(id);
-                    trans.Commit();
-                }
-                catch
-                {
-                    trans.Rollback();
-                    throw;
-                }
+                _itemRepository.RemoveItemByReceitaId(id);
+                trans.Complete();
             }
         }
     }

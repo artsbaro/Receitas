@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using DevWebReceitas.Domain.Entities;
 using DevWebReceitas.Domain.Filters;
 using DevWebReceitas.Domain.Interfaces.Repositories;
-using System.Threading.Tasks;
 
 namespace DevWebReceitas.Infra.Data.Repository
 {
@@ -15,23 +14,6 @@ namespace DevWebReceitas.Infra.Data.Repository
     {
         public ReceitaRepository(IConfiguration configuration) : base(configuration)
         {
-        }
-
-        public async Task CreateAsync(Receita entity)
-        {
-            await Connection.ExecuteAsync(
-                "SProc_Receita_Insert",
-                commandType: CommandType.StoredProcedure,
-                param: new
-                {
-                    entity.Id,
-                    entity.Titulo,
-                    entity.Descricao,
-                    entity.ModoPreparo,
-                    entity.Ativo,
-                    entity.DataCadastro
-                }
-            );
         }
 
         public void Create(Receita entity)
@@ -51,9 +33,9 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
-        public async Task RemoveAsync(Guid id)
+        public void Remove(Guid id)
         {
-            await Connection.ExecuteAsync(
+            Connection.Execute(
                 "SProc_Receita_Delete",
                 commandType: CommandType.StoredProcedure,
                 param: new
@@ -63,45 +45,30 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
-        public void Remove(Guid id)
-        {
-            RemoveAsync(id).ConfigureAwait(false);
-        }
-
-        public Task<Receita> FindByIdAsync(Guid id)
+        public Receita FindById(Guid id)
         {
             var obj = Connection.QuerySingleOrDefault("SProc_Receita_GetById",
-                commandType: CommandType.StoredProcedure,
-                param: new { Id = id });
+            commandType: CommandType.StoredProcedure,
+            param: new { Id = id });
 
             if (obj == null)
-                throw new ArgumentException("Receita não encontrado");
+                throw new ArgumentException("Receita não encontrada");
 
             return MapFromDB(obj);
         }
 
-        public Receita FindById(Guid id)
-        {
-            return FindByIdAsync(id).Result;
-        }
-
-        public Task<IEnumerable<Receita>> ListAsync(ReceitaFilter filter)
-        {
-            var result = Connection.Query(
-               "SProc_Receita_GetAll",
-               commandType: CommandType.StoredProcedure);
-
-            return Task.Run(() => MapFromDB(result));
-        }
-
         public IEnumerable<Receita> List(ReceitaFilter filter)
         {
-            return ListAsync(filter).Result;
+            var result = Connection.Query(
+           "SProc_Receita_GetAll",
+           commandType: CommandType.StoredProcedure);
+
+            return MapFromDB(result);
         }
 
-        public async Task UpdateAsync(Receita entity)
+        public void Update(Receita entity)
         {
-            await Connection.ExecuteAsync(
+            Connection.Execute(
                 "SProc_Receita_Update",
                 commandType: CommandType.StoredProcedure,
                 param: new
@@ -114,11 +81,6 @@ namespace DevWebReceitas.Infra.Data.Repository
                     entity.DataCadastro
                 }
             );
-        }
-
-        public void Update(Receita entity)
-        {
-            UpdateAsync(entity).ConfigureAwait(false);
         }
 
         #region Map

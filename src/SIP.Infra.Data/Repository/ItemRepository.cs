@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace DevWebReceitas.Infra.Data.Repository
 {
@@ -14,23 +14,6 @@ namespace DevWebReceitas.Infra.Data.Repository
     {
         public ItemRepository(IConfiguration configuration) : base(configuration)
         {
-        }
-
-        public async Task CreateAsync(Item entity)
-        {
-            await Connection.ExecuteAsync(
-                "SProc_Item_Insert",
-                commandType: CommandType.StoredProcedure,
-                param: new {
-                    entity.Id,
-                    entity.Quantidade,
-                    IngredienteId = entity.Ingrediente.Id,
-                    entity.ReceitaId,
-                    entity.Obs,
-                    entity.Ativo,
-                    entity.DataCadastro
-                }
-            );
         }
 
         public void Create(Item entity)
@@ -51,36 +34,27 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
-
-        public Task<Item> FindByIdAsync(Guid id)
+        public Item FindById(Guid id)
         {
-            return Connection.QueryFirstOrDefaultAsync<Item>(
+            var result = Connection.QueryFirstOrDefault(
                "SProc_Item_GetById",
                commandType: CommandType.StoredProcedure
             );
-        }
 
-        public Item FindById(Guid id)
-        {
-            return FindByIdAsync(id).Result;
-        }
-
-        public Task<IEnumerable<Item>> ListAsync(ItemFilter filter)
-        {
-            return Connection.QueryAsync<Item>(
-               "SProc_Item_GetAll",
-               commandType: CommandType.StoredProcedure
-           );
+            return MapFromDB(result);
         }
 
         public IEnumerable<Item> List(ItemFilter filter)
         {
-            return ListAsync(filter).Result;
+            return Connection.Query<Item>(
+               "SProc_Item_GetAll",
+               commandType: CommandType.StoredProcedure
+            );
         }
 
-        public async Task RemoveAsync(Guid id)
+        public void Remove(Guid id)
         {
-            await Connection.ExecuteAsync(
+            Connection.Execute(
                 "SProc_Item_Delete",
                 commandType: CommandType.StoredProcedure,
                 param: new
@@ -90,54 +64,61 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
-        public void Remove(Guid id)
-        {
-            RemoveAsync(id).Wait();
-        }
-
-        public async Task UpdateAsync(Item entity)
-        {
-            await Connection.ExecuteAsync(
-                "SProc_Ingrediente_Update",
-                commandType: CommandType.StoredProcedure,
-                param: entity
-            );
-        }
-
         public void Update(Item entity)
         {
-            UpdateAsync(entity).Wait();
+            Connection.Execute(
+                 "SProc_Ingrediente_Update",
+                 commandType: CommandType.StoredProcedure,
+                 param: entity
+             );
         }
 
         public void RemoveItemByReceitaId(Guid id)
         {
-            RemoveItemByReceitaIdAsync(id).ConfigureAwait(false);
-        }
-
-        public async Task RemoveItemByReceitaIdAsync(Guid id)
-        {
-            await Connection.ExecuteAsync(
+            Connection.Execute(
                "SProc_Item_DeleteByReceitaId",
                commandType: CommandType.StoredProcedure,
                param: new
                {
                    Id = id
                }
-           );
-        }
-
-        public async Task<IEnumerable<Item>> FindByReceitaIdAsync(Guid id)
-        {
-            return await Connection.QueryAsync<Item>(
-               "SProc_Item_GetByReceitaId",
-               commandType: CommandType.StoredProcedure,
-               param: new { ReceitaId = id }
             );
         }
 
         public IEnumerable<Item> FindByReceitaId(Guid id)
         {
-            return FindByReceitaIdAsync(id).Result;
+            var result = Connection.Query(
+               "SProc_Item_GetByReceitaId",
+               commandType: CommandType.StoredProcedure,
+               param: new { ReceitaId = id }
+            );
+
+            return MapFromDB(result);
         }
+
+        #region Map
+        public Item MapFromDB(dynamic obj)
+        {
+            return new Item
+            {
+                Id = obj.Id,
+                Ativo = obj.Ativo,
+                DataCadastro = obj.DataCadastro,
+                Obs = obj.Obs,
+                Quantidade = obj.Quantidade,
+                ReceitaId = obj.ReceitaId,
+                DataUltimaAlteracao = obj.DataUltimaAlteracao,
+                Ingrediente = new Ingrediente { 
+                    Id = obj.IngredienteId,
+                    Nome = obj.IngredienteNome
+                }
+            };
+        }
+
+        public IEnumerable<Item> MapFromDB(IEnumerable<dynamic> obj)
+        {
+            return obj.Select(x => (Item)MapFromDB(x));
+        }
+        #endregion
     }
 }

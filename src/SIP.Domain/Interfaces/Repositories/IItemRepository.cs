@@ -2,7 +2,6 @@
 using DevWebReceitas.Domain.Filters;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace DevWebReceitas.Domain.Interfaces.Repositories
 {
@@ -10,9 +9,5 @@ namespace DevWebReceitas.Domain.Interfaces.Repositories
     {
         void RemoveItemByReceitaId(Guid id);
         IEnumerable<Item> FindByReceitaId(Guid id);
-
-        Task RemoveItemByReceitaIdAsync(Guid id);
-
-        Task<IEnumerable<Item>> FindByReceitaIdAsync(Guid id);
     }
 }
