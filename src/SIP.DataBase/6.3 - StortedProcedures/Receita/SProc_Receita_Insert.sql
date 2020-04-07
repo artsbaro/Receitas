@@ -1,18 +1,17 @@
-﻿CREATE PROCEDURE SProc_Receita_Insert
+﻿CREATE PROCEDURE [dbo].SProc_Receita_Insert
 (
-    @Id int ,
     @Codigo uniqueidentifier,
     @Titulo varchar(150) ,
     @Descricao varchar(256),
     @ModoPreparo varchar(MAX),
-    @CategoriaId uniqueidentifier,
+    @CategoriaId smallint,
 	@Ativo bit ,
 	@DataCadastro datetime 
 )
 As
 
 INSERT INTO [dbo].[tblReceitas]
-           (    [Id],
+           (    
                 [Codigo],
                 [Titulo],
                 [Descricao] ,
@@ -21,7 +20,7 @@ INSERT INTO [dbo].[tblReceitas]
 	            [Ativo],
 	            [DataCadastro] )
      VALUES
-           (    @Id ,
+           (    
                 @Codigo,
                 @Titulo ,
                 @Descricao ,

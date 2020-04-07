@@ -27,8 +27,8 @@ namespace DevWebReceitas.Services.Api.Controllers
         {
             try
             {
-                var id = _service.Create(item);
-                return CreatedAtAction(nameof(Find), new { id }, item);
+                var code = _service.Create(item);
+                return CreatedAtAction(nameof(Find), new { code }, item);
             }
             catch (Exception ex)
             {
@@ -52,14 +52,14 @@ namespace DevWebReceitas.Services.Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{code}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public IActionResult Remove(Guid id)
+        public IActionResult Remove(Guid code)
         {
             try
             {
-                _service.Remove(id);
+                _service.Remove(code);
                 return Ok();
             }
             catch (Exception ex)
@@ -84,7 +84,7 @@ namespace DevWebReceitas.Services.Api.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{code}")]
         [ProducesResponseType(typeof(ReceitaDto), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE SProc_Categoria_GetById
+﻿CREATE PROCEDURE [dbo].SProc_Categoria_GetById
 (
 	@Id smallint
 )

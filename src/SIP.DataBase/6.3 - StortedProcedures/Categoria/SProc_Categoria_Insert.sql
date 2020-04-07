@@ -1,23 +1,22 @@
-﻿CREATE PROCEDURE SProc_Categoria_Insert
+﻿CREATE PROCEDURE [dbo].SProc_Categoria_Insert
 (
-	@Id					uniqueidentifier
+    @Codigo            uniqueidentifier 
 	,@Nome              varchar(128)
-    ,@Codigo            smallint
     ,@Ativo				bit
     ,@DataCadastro		datetime
 )
 As
 
 INSERT INTO [dbo].[tblCategorias]
-           ([Id]
-           ,[Nome]
-           ,[Codigo]
+           (
+           [Codigo]
+           ,[Nome]           
            ,[Ativo]
            ,[DataCadastro])
      VALUES
-           (@Id				
-			,@Nome	
-            ,@Codigo
+           (
+           @Codigo
+           ,@Nome	            
 			,@Ativo			
 			,@DataCadastro)
 

@@ -1,5 +1,5 @@
-﻿CREATE TABLE [tblReceitas] (
-    [Id] int NOT NULL,
+﻿CREATE TABLE [dbo].[tblReceitas] (
+    [Id] int identity(1,1) NOT NULL,
     [Codigo] uniqueidentifier NOT NULL,
     [Titulo] varchar(150) NOT NULL DEFAULT '',
     [Descricao] varchar(256) NULL DEFAULT '',

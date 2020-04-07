@@ -1,11 +1,11 @@
-﻿CREATE PROCEDURE SProc_Receita_Update
+﻿CREATE PROCEDURE [dbo].SProc_Receita_Update
 (
     @Id int,
     @Codigo uniqueidentifier,
     @Titulo varchar(150) ,
     @Descricao varchar(256),
     @ModoPreparo varchar(MAX),
-    @CategoriaId uniqueidentifier,
+    @CategoriaId smallint,
 	@Ativo bit ,
     @DataUltimaAlteracao DATETIME 
 )

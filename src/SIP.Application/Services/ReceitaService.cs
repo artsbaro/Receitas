@@ -25,10 +25,10 @@ namespace DevWebReceitas.Application.Services
 
         public Guid Create(ReceitaInsertDto dto)
         {
-            var id = Guid.NewGuid();
+            var codigo = Guid.NewGuid();
             var objPersistencia = new Receita
             {
-                Id = id,
+                Codigo = codigo,
                 Titulo = dto.Titulo,
                 Descricao = dto.Descricao,
                 ModoPreparo = dto.ModoPreparo,
@@ -36,7 +36,7 @@ namespace DevWebReceitas.Application.Services
             }; 
 
             _service.Create(objPersistencia);
-            return objPersistencia.Id;
+            return objPersistencia.Codigo;
         }
 
         public IEnumerable<ReceitaDto> List(ReceitaFilter filter)

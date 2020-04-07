@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE SProc_Receita_DeleteByCode
+﻿CREATE PROCEDURE [dbo].SProc_Receita_DeleteByCode
 (
 	@Codigo uniqueidentifier
 )

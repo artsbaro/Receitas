@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[SProc_Receita_GetById]  
 (  
- @Id uniqueidentifier  
+ @Id int  
 )  
 As  
   

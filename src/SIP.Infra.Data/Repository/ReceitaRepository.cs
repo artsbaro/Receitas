@@ -23,10 +23,12 @@ namespace DevWebReceitas.Infra.Data.Repository
                 commandType: CommandType.StoredProcedure,
                 param: new
                 {
-                    entity.Id,
+                    entity.Codigo,
                     entity.Titulo,
                     entity.Descricao,
                     entity.ModoPreparo,
+                    entity.CaminhoImagem,
+                    entity.Ingredientes,
                     CategoriaId = entity.Categoria.Id,
                     entity.Ativo,
                     entity.DataCadastro

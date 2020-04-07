@@ -22,9 +22,8 @@ namespace DevWebReceitas.Infra.Data.Repository
                 commandType: CommandType.StoredProcedure,
                 param: new
                 {
-                    entity.Id,
-                    entity.Nome,
                     entity.Codigo,
+                    entity.Nome,                 
                     entity.Ativo,
                     entity.DataCadastro
                 }

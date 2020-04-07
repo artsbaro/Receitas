@@ -4,7 +4,7 @@ namespace DevWebReceitas.Application.Dtos.Categoria
 {
     public class CategoriaDto
     {
-        public Guid Id { get; set; }
+        public Guid Codigo { get; set; }
         public string Nome { get; set; }
     }
 }

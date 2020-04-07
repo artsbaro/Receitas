@@ -21,9 +21,9 @@ namespace DevWebReceitas.Application.Services
         public Guid Create(CategoriaInsertDto entity)
         {
             var objPersistencia = TypeConverter.ConvertTo<Categoria>(entity);
-            objPersistencia.Id = Guid.NewGuid();
+            objPersistencia.Codigo = Guid.NewGuid();
             _service.Create(objPersistencia);
-            return objPersistencia.Id;
+            return objPersistencia.Codigo;
         }
 
         public IEnumerable<CategoriaDto> List(CategoriaFilter filter)

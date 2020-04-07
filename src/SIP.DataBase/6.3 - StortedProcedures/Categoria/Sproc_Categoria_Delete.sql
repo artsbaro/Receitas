@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Sproc_Categoria_Delete
+﻿CREATE PROCEDURE [dbo].Sproc_Categoria_Delete
 (
 	@Id smallint
 )

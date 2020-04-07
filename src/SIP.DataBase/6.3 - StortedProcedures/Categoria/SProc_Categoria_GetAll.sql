@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE SProc_Categoria_GetAll
+﻿CREATE PROCEDURE [dbo].SProc_Categoria_GetAll
 As
 
 

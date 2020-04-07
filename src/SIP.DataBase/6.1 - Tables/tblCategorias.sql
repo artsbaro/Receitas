@@ -1,5 +1,5 @@
-﻿CREATE TABLE [tblCategorias] (
-    [Id] smallint NOT NULL,
+﻿CREATE TABLE [dbo].[tblCategorias] (
+    [Id] smallint identity(1,1) NOT NULL,
 	[Codigo] uniqueidentifier NOT NULL,
 	[Nome] varchar(128),
 	[Ativo] bit NOT NULL,

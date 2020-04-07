@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE SProc_Categoria_GetByCode
+﻿CREATE PROCEDURE [dbo].SProc_Categoria_GetByCode
 (
 	@Codigo uniqueidentifier
 )

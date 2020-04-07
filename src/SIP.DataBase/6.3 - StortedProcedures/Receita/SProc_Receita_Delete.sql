@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE SProc_Receita_Delete
+﻿CREATE PROCEDURE [dbo].SProc_Receita_Delete
 (
-	@Id uniqueidentifier
+	@Id int
 )
 AS
 

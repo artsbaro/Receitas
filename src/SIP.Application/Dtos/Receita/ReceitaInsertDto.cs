@@ -24,7 +24,7 @@ namespace DevWebReceitas.Application.Dtos
         public string ModoPreparo { get; set; }
 
         [Required(ErrorMessage = "CategoriaId não preenchido.")]
-        public Guid CategoriaId { get; set; }
+        public short CategoriaId { get; set; }
 
         [Required(ErrorMessage = "Ingredientes não preenchido.")]
         [MinLength(3, ErrorMessage = "Ingredientes deve ter mais que 3 caracteres")]

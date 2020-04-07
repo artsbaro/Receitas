@@ -1,8 +1,8 @@
-﻿CREATE PROCEDURE SProc_Categoria_Update
+﻿CREATE PROCEDURE [dbo].SProc_Categoria_Update
 (
-   @Id uniqueidentifier ,
+   @Id smallint ,
 	@Nome varchar(128),
-	@Codigo smallint,
+	@Codigo uniqueidentifier ,
 	@Ativo bit ,
 	@DataUltimaAlteracao datetime
 )
