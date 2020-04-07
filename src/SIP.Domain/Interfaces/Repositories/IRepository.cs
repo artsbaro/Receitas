@@ -9,8 +9,8 @@ namespace DevWebReceitas.Domain.Interfaces.Repositories
     {
         void Create(T entity);
         void Update(T entity);
-        void Remove(Guid id);
+        void Remove(int id);
         IEnumerable<T> List(TFiltro filter);
-        T FindById(Guid id);
+        T FindById(int id);
     }
 }

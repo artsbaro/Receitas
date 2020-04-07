@@ -1,11 +1,14 @@
 ﻿using DevWebReceitas.Domain.Entities;
 using DevWebReceitas.Domain.Filters;
+using System;
 
 namespace DevWebReceitas.Domain.Interfaces.Repositories
 {
     public interface ICategoriaRepository : IRepository<Categoria, CategoriaFilter>
     {
-        //void RemoveEnderecosByServidorId(Guid id);
-        //IEnumerable<Ingrediente> FindByServidorId(Guid id);
+        Categoria FindById(short id);
+        void Remove(short id);
+        void Remove(Guid code);
+        Categoria FindByCode(Guid code);
     }
 }

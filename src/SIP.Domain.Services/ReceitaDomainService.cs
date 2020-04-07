@@ -4,7 +4,6 @@ using DevWebReceitas.Domain.Interfaces.Repositories;
 using DevWebReceitas.Domain.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Transactions;
 
 namespace DevWebReceitas.Domain.Services
@@ -12,12 +11,10 @@ namespace DevWebReceitas.Domain.Services
     public class ReceitaDomainService : IReceitaDomainService
     {
         private readonly IReceitaRepository _receitaRepository;
-        private readonly IItemRepository _itemRepository;
 
-        public ReceitaDomainService(IReceitaRepository receitaRepository, IItemRepository itemRepository)
+        public ReceitaDomainService(IReceitaRepository receitaRepository)
         {
             _receitaRepository = receitaRepository;
-            _itemRepository = itemRepository;
         }
 
         public void Create(Receita entity)
@@ -25,18 +22,19 @@ namespace DevWebReceitas.Domain.Services
             using (var trans = new TransactionScope())
             {
                 _receitaRepository.Create(entity);
-                foreach (var item in entity.Itens ?? Enumerable.Empty<Item>())
-                {
-                    _itemRepository.Create(item);
-                }
                 trans.Complete();
             }
         }
 
-        public Receita FindById(Guid id)
+        public Receita FindById(int id)
         {
             var receita = _receitaRepository.FindById(id);
-            receita.Itens = _itemRepository.FindByReceitaId(receita.Id);
+            return receita;
+        }
+
+        public Receita FindByCode(Guid code)
+        {
+            var receita = _receitaRepository.FindByCode(code);
             return receita;
         }
 
@@ -45,9 +43,14 @@ namespace DevWebReceitas.Domain.Services
             return _receitaRepository.List(filter);
         }
 
-        public void Remove(Guid id)
+        public void Remove(int id)
         {
             _receitaRepository.Remove(id);
+        }
+
+        public void Remove(Guid code)
+        {
+            _receitaRepository.Remove(code);
         }
 
         public void Update(Receita entity)
@@ -56,10 +59,6 @@ namespace DevWebReceitas.Domain.Services
             using (var trans = new TransactionScope())
             {
                 _receitaRepository.Update(entity);
-                foreach (var item in entity.Itens ?? Enumerable.Empty<Item>())
-                {
-                    _itemRepository.Create(item);
-                }
                 trans.Complete();
             }
         }

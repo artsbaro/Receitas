@@ -17,13 +17,9 @@ namespace DevWebReceitas.Application.Mappers.Receitas
                 Titulo = source.Titulo,
                 Descricao = source.Descricao,
                 ModoPreparo = source.ModoPreparo,
-                Itens = source.Itens.Select(x => new Item
-                {
-                    Id = Guid.NewGuid(),
-                    Quantidade = x.Quantidade,
-                    Obs = x.Obs,
-                    Ingrediente = new Ingrediente { Id = x.IngredienteId }
-                })
+                Codigo = Guid.NewGuid(),
+                Ingredientes = source.Ingredientes,
+                Categoria = new Categoria { Id = source.CategoriaId }
             };
         }
 

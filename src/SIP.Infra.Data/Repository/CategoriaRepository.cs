@@ -24,6 +24,7 @@ namespace DevWebReceitas.Infra.Data.Repository
                 {
                     entity.Id,
                     entity.Nome,
+                    entity.Codigo,
                     entity.Ativo,
                     entity.DataCadastro
                 }
@@ -31,7 +32,7 @@ namespace DevWebReceitas.Infra.Data.Repository
         }
 
 
-        public Categoria FindById(Guid id)
+        public Categoria FindById(short id)
         {
             return Connection.QueryFirstOrDefault<Categoria>(
                "SProc_Categoria_GetById",
@@ -43,6 +44,18 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
+        public Categoria FindByCode(Guid code)
+        {
+            return Connection.QueryFirstOrDefault<Categoria>(
+               "SProc_Categoria_GetByCode",
+               commandType: CommandType.StoredProcedure,
+                param: new
+                {
+                    Codigo = code
+                }
+            );
+        }
+
         public IEnumerable<Categoria> List(CategoriaFilter filter)
         {
             return Connection.Query<Categoria>(
@@ -51,7 +64,7 @@ namespace DevWebReceitas.Infra.Data.Repository
            );
         }
 
-        public void Remove(Guid id)
+        public void Remove(short id)
         {
             Connection.Execute(
                 "SProc_Categoria_Delete",
@@ -59,6 +72,18 @@ namespace DevWebReceitas.Infra.Data.Repository
                 param: new
                 {
                     Id = id
+                }
+            );
+        }
+
+        public void Remove(Guid code)
+        {
+            Connection.Execute(
+                "SProc_Categoria_Delete",
+                commandType: CommandType.StoredProcedure,
+                param: new
+                {
+                    Codigo = code
                 }
             );
         }
@@ -71,10 +96,21 @@ namespace DevWebReceitas.Infra.Data.Repository
                 param: new {
                     entity.Id,
                     entity.Nome,
+                    entity.Codigo,
                     entity.Ativo,
                     entity.DataUltimaAlteracao
                 }
             );
+        }
+
+        public void Remove(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Categoria FindById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

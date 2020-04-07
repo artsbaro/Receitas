@@ -1,6 +1,6 @@
-﻿using DevWebReceitas.Application.Dtos.Item;
+﻿using DevWebReceitas.Application.Attributes;
+using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -26,8 +26,16 @@ namespace DevWebReceitas.Application.Dtos
         [Required(ErrorMessage = "CategoriaId não preenchido.")]
         public Guid CategoriaId { get; set; }
 
-        public IEnumerable<ItemInsertDto> Itens { get; set; }
+        [Required(ErrorMessage = "Ingredientes não preenchido.")]
+        [MinLength(3, ErrorMessage = "Ingredientes deve ter mais que 3 caracteres")]
+        [MaxLength(4000, ErrorMessage = "Ingredientes deve ter menos que 4000 caracteres")]
+        [DisplayName("Ingredientes")]
+        public string Ingredientes { get; set; }
+
+        [Required(ErrorMessage = "Please select a file.")]
+        [DataType(DataType.Upload)]
+        [MaxFileSize(5 * 1024 * 1024)]
+        [AllowedExtensions(new string[] { ".jpg", ".png" })]
+        public IFormFile Imagem { get; set; }
     }
 }
-
-

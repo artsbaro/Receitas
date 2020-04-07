@@ -34,7 +34,7 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
-        public void Remove(Guid id)
+        public void Remove(int id)
         {
             Connection.Execute(
                 "SProc_Receita_Delete",
@@ -46,11 +46,35 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
-        public Receita FindById(Guid id)
+        public void Remove(Guid code)
+        {
+            Connection.Execute(
+                "SProc_Receita_DeleteByCode",
+                commandType: CommandType.StoredProcedure,
+                param: new
+                {
+                    Codigo = code
+                }
+            );
+        }
+
+        public Receita FindById(int id)
         {
             var obj = Connection.QuerySingleOrDefault("SProc_Receita_GetById",
             commandType: CommandType.StoredProcedure,
             param: new { Id = id });
+
+            if (obj == null)
+                throw new ArgumentException("Receita não encontrada");
+
+            return MapFromDB(obj);
+        }
+
+        public Receita FindByCode(Guid code)
+        {
+            var obj = Connection.QuerySingleOrDefault("SProc_Receita_GetByCode",
+            commandType: CommandType.StoredProcedure,
+            param: new { Codigo = code });
 
             if (obj == null)
                 throw new ArgumentException("Receita não encontrada");
@@ -75,9 +99,12 @@ namespace DevWebReceitas.Infra.Data.Repository
                 param: new
                 {
                     entity.Id,
+                    entity.Codigo,
                     entity.Titulo,
                     entity.Descricao,
                     entity.ModoPreparo,
+                    entity.CaminhoImagem,
+                    entity.Ingredientes,
                     CategoriaId = entity.Categoria.Id,
                     entity.Ativo,
                     entity.DataCadastro
@@ -91,9 +118,12 @@ namespace DevWebReceitas.Infra.Data.Repository
             return new Receita
             {
                 Id = obj.Id,
+                Codigo = obj.Codigo,
                 Titulo = obj.Titulo,
                 Descricao = obj.Descricao,
                 ModoPreparo = obj.ModoPreparo,
+                CaminhoImagem = obj.CaminhoImagem,
+                Ingredientes = obj.Ingredientes,
                 Categoria = new Categoria { Id = obj.CategoriaId, Nome = obj.CategoriaNome},
                 Ativo = obj.Ativo,
                 DataCadastro = obj.DataCadastro,

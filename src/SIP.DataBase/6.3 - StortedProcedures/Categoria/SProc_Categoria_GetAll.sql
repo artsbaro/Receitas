@@ -3,6 +3,7 @@ As
 
 
 	SELECT	[Id]
+			,[Codigo]
 			,[Nome]
 			,[Ativo]
 			,[DataCadastro]

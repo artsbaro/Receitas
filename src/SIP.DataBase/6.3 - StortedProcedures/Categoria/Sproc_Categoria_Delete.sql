@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE Sproc_Categoria_Delete
 (
-	@Id uniqueidentifier
+	@Id smallint
 )
 As
 	DELETE 

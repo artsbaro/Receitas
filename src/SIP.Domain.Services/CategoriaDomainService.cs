@@ -26,7 +26,12 @@ namespace DevWebReceitas.Domain.Services
             }
         }
 
-        public Categoria FindById(Guid id)
+        public Categoria FindById(Guid code)
+        {
+            return _CategoriaRepository.FindByCode(code);
+        }
+
+        public Categoria FindById(int id)
         {
             return _CategoriaRepository.FindById(id);
         }

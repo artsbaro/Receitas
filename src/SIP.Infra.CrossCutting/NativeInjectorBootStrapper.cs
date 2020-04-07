@@ -26,21 +26,15 @@ namespace DevWebReceitas.Infra.CrossCutting.IoC
 
             //DomainServices            
             services.AddScoped<IReceitaDomainService, ReceitaDomainService>();
-            services.AddScoped<IItemDomainService, ItemDomainService>();
-            services.AddScoped<IIngredienteDomainService, IngredienteDomainService>();
             services.AddScoped<ICategoriaDomainService, CategoriaDomainService>();
 
             //AppServices
             services.AddScoped<IReceitaService, ReceitaService>();
-            services.AddScoped<IItemService, ItemService>();
-            services.AddScoped<IIngredienteService, IngredienteService>();
             services.AddScoped<ICategoriaService, CategoriaService>();
 
             // Infra - Data
             services.AddScoped<IReceitaRepository, ReceitaRepository>();
-            services.AddScoped<IIngredienteRepository, IngredienteRepository>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
-            services.AddScoped<IItemRepository, ItemRepository>();
             //services.AddScoped<IUnitOfWork, UnitOfWork>();
             //services.AddScoped<IUnitOfWorkTransaction, UnitOfWorkTransaction>();
         }

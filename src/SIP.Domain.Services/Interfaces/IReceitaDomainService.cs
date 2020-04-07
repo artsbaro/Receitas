@@ -11,7 +11,7 @@ namespace DevWebReceitas.Domain.Services.Interfaces
         void Update(Receita entity);
         void Remove(Guid id);
         IEnumerable<Receita> List(ReceitaFilter filter);
-        Receita FindById(Guid id);
+        Receita FindByCode(Guid code);
 
         //Task CreateAsync(Receita entity);
         //Task UpdateAsync(Receita entity);

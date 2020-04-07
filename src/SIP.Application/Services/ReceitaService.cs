@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using DevWebReceitas.Application.Dtos;
 using DevWebReceitas.Application.Interfaces;
 using DevWebReceitas.Application.Mappers.Default;
@@ -14,16 +13,13 @@ namespace DevWebReceitas.Application.Services
     public class ReceitaService : IReceitaService, IDisposable
     {
         private readonly IReceitaDomainService _service;
-        private readonly IReceitaMapper _receitaMapper;
         private readonly IReceitaDtoMapper _receitaDtoMapper;
 
 
         public ReceitaService(IReceitaDomainService service,
-                                IReceitaMapper receitaMapper,
                                 IReceitaDtoMapper receitaDtoMapper)
         {
             _service = service;
-            _receitaMapper = receitaMapper;
             _receitaDtoMapper = receitaDtoMapper;
         }
 
@@ -36,14 +32,7 @@ namespace DevWebReceitas.Application.Services
                 Titulo = dto.Titulo,
                 Descricao = dto.Descricao,
                 ModoPreparo = dto.ModoPreparo,
-                Itens = dto.Itens.Select(x => new Item
-                {
-                    Id = Guid.NewGuid(),
-                    ReceitaId = id,
-                    Quantidade = x.Quantidade,
-                    Obs = x.Obs,
-                    Ingrediente = new Ingrediente { Id = x.IngredienteId }
-                })
+                
             }; 
 
             _service.Create(objPersistencia);
@@ -61,9 +50,9 @@ namespace DevWebReceitas.Application.Services
             _service.Remove(id);
         }
 
-        public ReceitaDto FindById(Guid id)
+        public ReceitaDto FindByCode(Guid id)
         {
-            var receita = _service.FindById(id);
+            var receita = _service.FindByCode(id);
             if (receita == null)
                 throw new ArgumentException("Receita não encontrada");
 

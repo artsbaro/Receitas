@@ -4,6 +4,7 @@ As
  SELECT 
     R.[Id] 
     ,R.[Titulo] 
+    ,R.Codigo
     ,R.[Descricao] 
     ,R.[ModoPreparo] 
     ,R.[CategoriaId]

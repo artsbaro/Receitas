@@ -1,6 +1,7 @@
 ﻿CREATE PROCEDURE SProc_Receita_Update
 (
-    @Id uniqueidentifier ,
+    @Id int,
+    @Codigo uniqueidentifier,
     @Titulo varchar(150) ,
     @Descricao varchar(256),
     @ModoPreparo varchar(MAX),
@@ -12,7 +13,8 @@ As
 
 
 UPDATE tblReceitas   SET 
-       [Titulo]  =              @Titulo
+       [Codigo] =               @Codigo
+      ,[Titulo]  =              @Titulo
       ,[Descricao] =            @Descricao
       ,[ModoPreparo] =          @ModoPreparo
       ,[CategoriaId] =          @CategoriaId

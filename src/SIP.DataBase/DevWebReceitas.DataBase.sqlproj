@@ -62,36 +62,25 @@
     <Folder Include="6.4 - Functions" />
     <Folder Include="6.5 - Scripts" />
     <Folder Include="6.3 - StortedProcedures\Receita" />
-    <Folder Include="6.3 - StortedProcedures\Ingrediente" />
-    <Folder Include="6.3 - StortedProcedures\Item" />
     <Folder Include="6.3 - StortedProcedures\Categoria" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="6.1 - Tables\tblReceitas.sql" />
-    <Build Include="6.1 - Tables\tblIngredientes.sql" />
     <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_Insert.sql" />
     <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_GetAll.sql" />
     <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_Delete.sql" />
     <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_GetById.sql" />
     <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_Update.sql" />
-    <Build Include="6.3 - StortedProcedures\Ingrediente\SProc_Ingrediente_Insert.sql" />
-    <Build Include="6.3 - StortedProcedures\Ingrediente\SProc_Ingrediente_Update.sql" />
-    <Build Include="6.3 - StortedProcedures\Ingrediente\SProc_Ingrediente_GetAll.sql" />
-    <Build Include="6.3 - StortedProcedures\Ingrediente\SProc_Ingrediente_GetById.sql" />
-    <Build Include="6.3 - StortedProcedures\Ingrediente\Sproc_Ingrediente_Delete.sql" />
-    <Build Include="6.1 - Tables\tblItens.sql" />
-    <Build Include="6.3 - StortedProcedures\Item\SProc_Item_Insert.sql" />
-    <Build Include="6.3 - StortedProcedures\Item\SProc_Item_Update.sql" />
-    <Build Include="6.3 - StortedProcedures\Item\SProc_Item_Delete.sql" />
-    <Build Include="6.3 - StortedProcedures\Item\SProc_Item_GetById.sql" />
-    <Build Include="6.3 - StortedProcedures\Item\SProc_Item_GetByReceitaId.sql" />
-    <Build Include="6.3 - StortedProcedures\Item\SProc_Item_DeleteByReceitaId.sql" />
-    <Build Include="6.3 - StortedProcedures\Categoria\Sproc_Ingrediente_Delete.sql" />
-    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Ingrediente_GetAll.sql" />
-    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Ingrediente_GetById.sql" />
-    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Ingrediente_Insert.sql" />
-    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Ingrediente_Update.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\Sproc_Categoria_Delete.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Categoria_GetAll.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Categoria_GetById.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Categoria_Insert.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Categoria_Update.sql" />
     <Build Include="6.1 - Tables\tblCategorias.sql" />
+    <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_DeleteByCode.sql" />
+    <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_GetByCode.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\SProc_Categoria_GetByCode.sql" />
+    <Build Include="6.3 - StortedProcedures\Categoria\Sproc_Categoria_DeleteByCode.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DevWebReceitas.DataBase.publish.xml" />

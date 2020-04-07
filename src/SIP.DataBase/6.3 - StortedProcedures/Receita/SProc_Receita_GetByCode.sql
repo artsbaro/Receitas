@@ -1,13 +1,13 @@
-﻿CREATE PROCEDURE [dbo].[SProc_Receita_GetById]  
+﻿CREATE PROCEDURE [dbo].[SProc_Receita_GetByCode]  
 (  
- @Id uniqueidentifier  
+ @Codigo uniqueidentifier  
 )  
 As  
   
  SELECT 
     R.[Id] 
-    ,R.[Titulo] 
     ,R.Codigo
+    ,R.[Titulo] 
     ,R.[Descricao] 
     ,R.[ModoPreparo] 
     ,R.[CategoriaId]
@@ -17,5 +17,5 @@ As
     ,R.[DataUltimaAlteracao] 
  FROM dbo.tblReceitas R (nolock) 
  Join dbo.tblCategorias C (nolock) On C.Id = R.CategoriaId
- Where R.Id = @Id  
+ Where R.Codigo = @Codigo
  

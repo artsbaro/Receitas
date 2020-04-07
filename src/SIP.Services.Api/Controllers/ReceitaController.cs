@@ -89,11 +89,11 @@ namespace DevWebReceitas.Services.Api.Controllers
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         [Consumes("application/json")]
-        public IActionResult Find(Guid id)
+        public IActionResult Find(Guid code)
         {
             try
             {
-                return Ok(_service.FindById(id));
+                return Ok(_service.FindByCode(code));
             }
             catch (ArgumentException ex)
             {
