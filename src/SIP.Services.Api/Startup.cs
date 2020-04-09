@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using DevWebReceitas.Infra.CrossCutting.IoC;
 using Swashbuckle.AspNetCore.Swagger;
 using Newtonsoft.Json;
-
+using DevWebReceitas.Services.Api.OperationFilter;
 
 namespace DevWebReceitas.Services.Api
 {
@@ -55,6 +55,7 @@ namespace DevWebReceitas.Services.Api
                     Title = "DevWebReceitas Project",
                     Description = "DevWebReceitas API Swagger surface"
                 });
+                s.OperationFilter<FileUploadOperation>(); //Register File Upload Operation Filter
             });
 
             // .NET Native DI Abstraction
@@ -68,6 +69,10 @@ namespace DevWebReceitas.Services.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
 
             //Ativa o Swagger
             app.UseSwagger();
@@ -77,6 +82,8 @@ namespace DevWebReceitas.Services.Api
             {
                 opt.SwaggerEndpoint("/swagger/v1/swagger.json", "DevWebReceitas Project V1");
             });
+
+            //app.UseStaticFiles();
 
             app.UseCors(MyAllowSpecificOrigins);
 

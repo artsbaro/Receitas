@@ -12,5 +12,7 @@ namespace DevWebReceitas.Application.Interfaces
         ReceitaDto FindByCode(Guid code);
         IEnumerable<ReceitaDto> List(ReceitaFilter filter);
         void Update(ReceitaDto entity);
+
+        byte[] FindImageByCode(Guid id);
     }
 }

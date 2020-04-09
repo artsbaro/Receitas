@@ -104,5 +104,26 @@ namespace DevWebReceitas.Services.Api.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("{codeReceita}/Imagem")]
+        [ProducesResponseType(typeof(ReceitaDto), 200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public IActionResult Imagem(Guid codeReceita)
+        {
+            try
+            {
+                byte[] img = _service.FindImageByCode(codeReceita);
+                return File(img, "image/png");
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(new Error(ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

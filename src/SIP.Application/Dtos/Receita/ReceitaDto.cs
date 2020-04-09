@@ -1,5 +1,4 @@
-﻿using DevWebReceitas.Application.Attributes;
-using DevWebReceitas.Application.Dtos.Categoria;
+﻿using DevWebReceitas.Application.Dtos.Categoria;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel;
@@ -36,10 +35,6 @@ namespace DevWebReceitas.Application.Dtos
         [DisplayName("Ingredientes")]
         public string Ingredientes { get; set; }
 
-        [Required(ErrorMessage = "Please select a file.")]
-        [DataType(DataType.Upload)]
-        [MaxFileSize(5 * 1024 * 1024)]
-        [AllowedExtensions(new string[] { ".jpg", ".png" })]
         public IFormFile Imagem { get; set; }
     }
 }

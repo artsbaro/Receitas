@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DevWebReceitas.Application.Dtos;
+using DevWebReceitas.Application.Extensions;
 using DevWebReceitas.Application.Interfaces;
 using DevWebReceitas.Application.Mappers.Default;
 using DevWebReceitas.Application.Mappers.Receitas;
@@ -32,8 +33,11 @@ namespace DevWebReceitas.Application.Services
                 Titulo = dto.Titulo,
                 Descricao = dto.Descricao,
                 ModoPreparo = dto.ModoPreparo,
-                
-            }; 
+                Imagem = dto.Imagem.ConvertToBytes(),
+                NomeArquivo = dto.Imagem.FileName,
+                Ingredientes = dto.Ingredientes,
+                Categoria = new Categoria { Id = dto.CategoriaId }
+            };
 
             _service.Create(objPersistencia);
             return objPersistencia.Codigo;
@@ -53,10 +57,12 @@ namespace DevWebReceitas.Application.Services
         public ReceitaDto FindByCode(Guid id)
         {
             var receita = _service.FindByCode(id);
-            if (receita == null)
-                throw new ArgumentException("Receita não encontrada");
-
             return _receitaDtoMapper.Map(receita);
+        }
+
+        public byte[] FindImageByCode(Guid id)
+        {
+            return _service.FindImageByCode(id);
         }
 
         public void Update(ReceitaDto entity)

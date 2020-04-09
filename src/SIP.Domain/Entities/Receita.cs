@@ -12,5 +12,14 @@ namespace DevWebReceitas.Domain.Entities
         public string Ingredientes { get; set; }
         public byte[] Imagem { get; set; }
         public string CaminhoImagem { get; set; }
+        public string NomeArquivo { get; set; }
+
+        public bool HasImage
+        {
+            get
+            {
+                return Imagem?.Length > 0;
+            }
+        }
     }
 }
