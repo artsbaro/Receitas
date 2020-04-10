@@ -11,6 +11,6 @@ namespace DevWebReceitas.Domain.Services.Interfaces
         void Update(Categoria entity);
         void Remove(Guid id);
         IEnumerable<Categoria> List(CategoriaFilter filter);
-        Categoria FindById(Guid id);
+        Categoria FindByCode(Guid code);
     }
 }

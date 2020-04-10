@@ -26,7 +26,7 @@ namespace DevWebReceitas.Domain.Services
             }
         }
 
-        public Categoria FindById(Guid code)
+        public Categoria FindByCode(Guid code)
         {
             return _CategoriaRepository.FindByCode(code);
         }

@@ -37,9 +37,9 @@ namespace DevWebReceitas.Application.Services
             _service.Remove(id);
         }
 
-        public CategoriaDto FindById(Guid id)
+        public CategoriaDto FindByCode(Guid code)
         {
-            var Categoria = _service.FindById(id);
+            var Categoria = _service.FindByCode(code);
             return TypeConverter.ConvertTo<CategoriaDto>(Categoria);
         }
 

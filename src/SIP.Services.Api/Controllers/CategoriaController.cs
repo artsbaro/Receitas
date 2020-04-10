@@ -95,16 +95,16 @@ namespace DevWebReceitas.Services.Api.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{codigo}")]
         [ProducesResponseType(typeof(CategoriaDto), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         [Consumes("application/json")]
-        public IActionResult Find(Guid id)
+        public IActionResult Find(Guid codigo)
         {
             try
             {
-                return Ok(_service.FindById(id));
+                return Ok(_service.FindByCode(codigo));
             }
             catch (ArgumentException ex)
             {

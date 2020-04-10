@@ -9,7 +9,7 @@ namespace DevWebReceitas.Application.Interfaces
     {
         Guid Create(CategoriaInsertDto entity);
         void Remove(Guid id);
-        CategoriaDto FindById(Guid id);
+        CategoriaDto FindByCode(Guid code);
         IEnumerable<CategoriaDto> List(CategoriaFilter filter);
         void Update(CategoriaDto entity);
     }
