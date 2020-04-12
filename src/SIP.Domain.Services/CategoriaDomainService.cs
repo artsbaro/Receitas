@@ -41,11 +41,11 @@ namespace DevWebReceitas.Domain.Services
             return _CategoriaRepository.List(filter);
         }
 
-        public void Remove(Guid id)
+        public void Remove(Guid codigo)
         {
             using (var trans = new TransactionScope())
             {
-                _CategoriaRepository.Remove(id);
+                _CategoriaRepository.Remove(codigo);
                 trans.Complete();
             }
         }

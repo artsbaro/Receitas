@@ -6,8 +6,8 @@ namespace DevWebReceitas.Domain.Interfaces.Repositories
 {
     public interface IReceitaRepository : IRepository<Receita, ReceitaFilter>
     {
-        Receita FindByCode(Guid code);
-        void Remove(Guid code);
+        Receita FindByCode(Guid codigo);
+        void Remove(Guid codigo);
     }
 }
 

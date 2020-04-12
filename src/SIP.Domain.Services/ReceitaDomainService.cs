@@ -62,9 +62,9 @@ namespace DevWebReceitas.Domain.Services
             return receita;
         }
 
-        public byte[] FindImageByCode(Guid code)
+        public byte[] FindImageByCode(Guid codigo)
         {
-            var receita = FindByCode(code);
+            var receita = FindByCode(codigo);
             if (receita == null)
                 throw new ArgumentException("Receita não encontrada");
 
@@ -84,9 +84,9 @@ namespace DevWebReceitas.Domain.Services
             _receitaRepository.Remove(id);
         }
 
-        public void Remove(Guid code)
+        public void Remove(Guid codigo)
         {
-            _receitaRepository.Remove(code);
+            _receitaRepository.Remove(codigo);
         }
 
         public void Update(Receita entity)

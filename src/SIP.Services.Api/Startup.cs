@@ -8,17 +8,28 @@ using DevWebReceitas.Infra.CrossCutting.IoC;
 using Swashbuckle.AspNetCore.Swagger;
 using Newtonsoft.Json;
 using DevWebReceitas.Services.Api.OperationFilter;
+using Microsoft.AspNetCore.ResponseCompression;
 
 namespace DevWebReceitas.Services.Api
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
+            //var builder = new ConfigurationBuilder()
+            //.SetBasePath(env.ContentRootPath)
+            //.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+            //.AddEnvironmentVariables();
+
+            //Configuration = builder.Build();
+
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        
 
         readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -35,17 +46,22 @@ namespace DevWebReceitas.Services.Api
                 });
             });
 
-            services.AddDistributedRedisCache(options =>
-            {
-                options.Configuration = Configuration.GetConnectionString("RedisConnection");
-                options.InstanceName = "Ingredientes:";
-            });
+            //services.AddDistributedRedisCache(options =>
+            //{
+            //    options.Configuration = Configuration.GetConnectionString("RedisConnection");
+            //    options.InstanceName = "Ingredientes:";
+            //});
 
             services
                 .AddMvc(options =>
                 { options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter()); })
                 .AddJsonOptions(options => options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.Configure<GzipCompressionProviderOptions>(
+                o => o.Level = System.IO.Compression.CompressionLevel.Fastest);
+            services.AddResponseCompression(
+                o => o.Providers.Add<GzipCompressionProvider>());
 
             services.AddSwaggerGen(s =>
             {
@@ -74,17 +90,18 @@ namespace DevWebReceitas.Services.Api
                 app.UseHsts();
             }
 
-            //Ativa o Swagger
-            app.UseSwagger();
 
-            // Ativa o Swagger UI
-            app.UseSwaggerUI(opt =>
+            if (env.IsDevelopment() || env.IsStaging())
             {
-                opt.SwaggerEndpoint("/swagger/v1/swagger.json", "DevWebReceitas Project V1");
-            });
+                app.UseSwagger();
+                app.UseSwaggerUI(opt =>
+                {
+                    opt.SwaggerEndpoint("/swagger/v1/swagger.json", "DevWebReceitas Project V1");
+                }); 
+            }
 
             //app.UseStaticFiles();
-
+            app.UseResponseCompression();
             app.UseCors(MyAllowSpecificOrigins);
 
             app.UseMvc();

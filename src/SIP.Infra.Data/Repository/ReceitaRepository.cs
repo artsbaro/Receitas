@@ -48,14 +48,14 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
-        public void Remove(Guid code)
+        public void Remove(Guid codigo)
         {
             Connection.Execute(
                 "SProc_Receita_DeleteByCode",
                 commandType: CommandType.StoredProcedure,
                 param: new
                 {
-                    Codigo = code
+                    Codigo = codigo
                 }
             );
         }
@@ -72,11 +72,11 @@ namespace DevWebReceitas.Infra.Data.Repository
             return MapFromDB(obj);
         }
 
-        public Receita FindByCode(Guid code)
+        public Receita FindByCode(Guid codigo)
         {
             var obj = Connection.QuerySingleOrDefault("SProc_Receita_GetByCode",
             commandType: CommandType.StoredProcedure,
-            param: new { Codigo = code });
+            param: new { Codigo = codigo });
 
             if (obj == null)
                 throw new ArgumentException("Receita não encontrada");
