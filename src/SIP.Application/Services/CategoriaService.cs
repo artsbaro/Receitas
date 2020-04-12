@@ -32,14 +32,14 @@ namespace DevWebReceitas.Application.Services
             return TypeConverter.ConvertTo<IEnumerable<CategoriaDto>>(list);
         }
 
-        public void Remove(Guid id)
+        public void Remove(Guid codigo)
         {
-            _service.Remove(id);
+            _service.Remove(codigo);
         }
 
-        public CategoriaDto FindById(Guid id)
+        public CategoriaDto FindByCode(Guid codigo)
         {
-            var Categoria = _service.FindById(id);
+            var Categoria = _service.FindByCode(codigo);
             return TypeConverter.ConvertTo<CategoriaDto>(Categoria);
         }
 

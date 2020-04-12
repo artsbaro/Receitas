@@ -16,10 +16,7 @@ namespace DevWebReceitas.Domain.Entities
 
         public bool HasImage
         {
-            get
-            {
-                return Imagem?.Length > 0;
-            }
+            get { return Imagem?.Length > 0; }
         }
     }
 }

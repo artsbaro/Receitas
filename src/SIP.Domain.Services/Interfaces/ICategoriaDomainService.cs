@@ -9,8 +9,8 @@ namespace DevWebReceitas.Domain.Services.Interfaces
     {
         void Create(Categoria entity);
         void Update(Categoria entity);
-        void Remove(Guid id);
+        void Remove(Guid codigo);
         IEnumerable<Categoria> List(CategoriaFilter filter);
-        Categoria FindById(Guid id);
+        Categoria FindByCode(Guid codigo);
     }
 }

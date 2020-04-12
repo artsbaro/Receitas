@@ -49,20 +49,20 @@ namespace DevWebReceitas.Application.Services
             return _receitaDtoMapper.Map(list);
         }
 
-        public void Remove(Guid id)
+        public void Remove(Guid codigo)
         {
-            _service.Remove(id);
+            _service.Remove(codigo);
         }
 
-        public ReceitaDto FindByCode(Guid id)
+        public ReceitaDto FindByCode(Guid codigo)
         {
-            var receita = _service.FindByCode(id);
+            var receita = _service.FindByCode(codigo);
             return _receitaDtoMapper.Map(receita);
         }
 
-        public byte[] FindImageByCode(Guid id)
+        public byte[] FindImageByCode(Guid codigo)
         {
-            return _service.FindImageByCode(id);
+            return _service.FindImageByCode(codigo);
         }
 
         public void Update(ReceitaDto entity)

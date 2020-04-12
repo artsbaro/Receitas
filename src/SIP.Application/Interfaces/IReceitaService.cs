@@ -8,11 +8,11 @@ namespace DevWebReceitas.Application.Interfaces
     public interface IReceitaService
     {
         Guid Create(ReceitaInsertDto entity);
-        void Remove(Guid id);
-        ReceitaDto FindByCode(Guid code);
+        void Remove(Guid codigo);
+        ReceitaDto FindByCode(Guid codigo);
         IEnumerable<ReceitaDto> List(ReceitaFilter filter);
         void Update(ReceitaDto entity);
 
-        byte[] FindImageByCode(Guid id);
+        byte[] FindImageByCode(Guid codigo);
     }
 }

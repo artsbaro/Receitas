@@ -52,14 +52,14 @@ namespace DevWebReceitas.Services.Api.Controllers
             }
         }
 
-        [HttpDelete("{code}")]
+        [HttpDelete("{codigo}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public IActionResult Remove(Guid code)
+        public IActionResult Remove(Guid codigo)
         {
             try
             {
-                _service.Remove(code);
+                _service.Remove(codigo);
                 return Ok();
             }
             catch (Exception ex)
@@ -84,16 +84,16 @@ namespace DevWebReceitas.Services.Api.Controllers
             }
         }
 
-        [HttpGet("{code}")]
+        [HttpGet("{codigo}")]
         [ProducesResponseType(typeof(ReceitaDto), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         [Consumes("application/json")]
-        public IActionResult Find(Guid code)
+        public IActionResult Find(Guid codigo)
         {
             try
             {
-                return Ok(_service.FindByCode(code));
+                return Ok(_service.FindByCode(codigo));
             }
             catch (ArgumentException ex)
             {
@@ -105,15 +105,15 @@ namespace DevWebReceitas.Services.Api.Controllers
             }
         }
 
-        [HttpGet("{codeReceita}/Imagem")]
+        [HttpGet("{codigoReceita}/Imagem")]
         [ProducesResponseType(typeof(ReceitaDto), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public IActionResult Imagem(Guid codeReceita)
+        public IActionResult Imagem(Guid codigoReceita)
         {
             try
             {
-                byte[] img = _service.FindImageByCode(codeReceita);
+                byte[] img = _service.FindImageByCode(codigoReceita);
                 return File(img, "image/png");
             }
             catch (ArgumentException ex)

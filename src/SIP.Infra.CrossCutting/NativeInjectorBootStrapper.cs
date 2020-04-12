@@ -5,8 +5,6 @@ using DevWebReceitas.Domain.Interfaces.Repositories;
 using DevWebReceitas.Domain.Services;
 using DevWebReceitas.Domain.Services.Interfaces;
 using DevWebReceitas.Infra.Data.Repository;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,7 +16,7 @@ namespace DevWebReceitas.Infra.CrossCutting.IoC
         {
             // ASP.NET HttpContext dependency
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IHostingEnvironment>(new HostingEnvironment());
+            //services.AddSingleton<IHostingEnvironment>(new HostingEnvironment());
 
             // Mappers
             services.AddSingleton<IReceitaDtoMapper, ReceitaDtoMapper>();
