@@ -15,23 +15,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{FF69E2EF-A8AB-41F4-81CB-DD936FA14BD8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Domain", "src\SIP.Domain\DevWebReceitas.Domain.csproj", "{4F925C30-87F8-4D1A-8794-7267D9B22072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Domain", "src\DevWebReceitas.Domain\DevWebReceitas.Domain.csproj", "{4F925C30-87F8-4D1A-8794-7267D9B22072}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Application", "src\SIP.Application\DevWebReceitas.Application.csproj", "{F0F76DA1-0C46-4A19-A18A-9397C4519DA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Application", "src\DevWebReceitas.Application\DevWebReceitas.Application.csproj", "{F0F76DA1-0C46-4A19-A18A-9397C4519DA6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Infra.Data", "src\SIP.Infra.Data\DevWebReceitas.Infra.Data.csproj", "{8695D5D0-0D56-4B00-8944-AA25F3B0C0B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Infra.Data", "src\DevWebReceitas.Infra.Data\DevWebReceitas.Infra.Data.csproj", "{8695D5D0-0D56-4B00-8944-AA25F3B0C0B4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Infra.CrossCutting.IoC", "src\SIP.Infra.CrossCutting\DevWebReceitas.Infra.CrossCutting.IoC.csproj", "{DB868361-86CD-4264-9B13-35F6DD2CC9C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Infra.CrossCutting.IoC", "src\DevWebReceitas.Infra.CrossCutting\DevWebReceitas.Infra.CrossCutting.IoC.csproj", "{DB868361-86CD-4264-9B13-35F6DD2CC9C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{82618B2C-BCFA-42D6-A90E-F8F21DB12E9F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - DataBase", "6 - DataBase", "{C57E3B6C-1392-4D44-9F1F-B59F655363DE}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DevWebReceitas.DataBase", "src\SIP.DataBase\DevWebReceitas.DataBase.sqlproj", "{7D925591-DD5F-4631-80EB-E8F736F46DA6}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DevWebReceitas.DataBase", "src\DevWebReceitas.DataBase\DevWebReceitas.DataBase.sqlproj", "{7D925591-DD5F-4631-80EB-E8F736F46DA6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Services.Api", "src\SIP.Services.Api\DevWebReceitas.Services.Api.csproj", "{0502ACBB-4ECF-4FC6-976D-1F4D640035D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Services.Api", "src\DevWebReceitas.Services.Api\DevWebReceitas.Services.Api.csproj", "{0502ACBB-4ECF-4FC6-976D-1F4D640035D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Domain.Services", "src\SIP.Domain.Services\DevWebReceitas.Domain.Services.csproj", "{363F7A4C-1840-4A03-B8B6-47B96A5CEE98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Domain.Services", "src\DevWebReceitas.Domain.Services\DevWebReceitas.Domain.Services.csproj", "{363F7A4C-1840-4A03-B8B6-47B96A5CEE98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
