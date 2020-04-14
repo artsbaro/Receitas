@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DevWebReceitas.Application.Dtos;
+using DevWebReceitas.Application.Dtos.Receita;
 using DevWebReceitas.Application.Mappers.Default;
 using DevWebReceitas.Domain.Entities;
 

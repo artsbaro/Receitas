@@ -1,4 +1,4 @@
-﻿using DevWebReceitas.Application.Dtos;
+﻿using DevWebReceitas.Application.Dtos.Receita;
 using DevWebReceitas.Domain.Entities;
 
 namespace DevWebReceitas.Application.Mappers.Receitas

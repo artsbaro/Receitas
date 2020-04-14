@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DevWebReceitas.Application.Dtos;
+using DevWebReceitas.Application.Dtos.Receita;
 using DevWebReceitas.Application.Extensions;
 using DevWebReceitas.Application.Interfaces;
 using DevWebReceitas.Application.Mappers.Default;

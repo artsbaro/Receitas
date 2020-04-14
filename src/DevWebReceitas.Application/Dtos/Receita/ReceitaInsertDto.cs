@@ -1,10 +1,9 @@
-﻿using DevWebReceitas.Application.Attributes;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace DevWebReceitas.Application.Dtos
+namespace DevWebReceitas.Application.Dtos.Receita
 {
     public class ReceitaInsertDto
     {
