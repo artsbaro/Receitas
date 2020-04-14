@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DevWebReceitas.Application.Dtos;
+using DevWebReceitas.Application.Dtos.Receita;
 using DevWebReceitas.Application.Interfaces;
 using DevWebReceitas.Domain.Filters;
 using DevWebReceitas.Services.Api.Errors;

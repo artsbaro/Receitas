@@ -1,4 +1,4 @@
-﻿using DevWebReceitas.Application.Dtos;
+﻿using DevWebReceitas.Application.Dtos.Receita;
 using DevWebReceitas.Domain.Entities;
 using System;
 using System.Collections.Generic;

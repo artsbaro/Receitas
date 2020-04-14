@@ -45,16 +45,20 @@ namespace DevWebReceitas.Domain.Services
         {
             using (var trans = new TransactionScope())
             {
-                _CategoriaRepository.Remove(codigo);
+                var categoria = FindByCode(codigo);
+                _CategoriaRepository.Remove(categoria.Id);
                 trans.Complete();
             }
         }
 
         public void Update(Categoria entity)
         {
-            entity.DataUltimaAlteracao = DateTime.Now;
             using (var trans = new TransactionScope())
             {
+                var categoria = FindByCode(entity.Codigo);
+
+                entity.Id = categoria.Id;
+                entity.DataUltimaAlteracao = DateTime.Now;
                 _CategoriaRepository.Update(entity);
                 trans.Complete();
             }
