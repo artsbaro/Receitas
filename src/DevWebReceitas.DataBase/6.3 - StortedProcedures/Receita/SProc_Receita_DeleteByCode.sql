@@ -4,6 +4,7 @@
 )
 AS
 
-	Delete 
-	from	tblReceitas
+	Update	tblReceitas SET
+			Ativo = 0,
+			Excluido = 1
 	Where	Codigo = @Codigo

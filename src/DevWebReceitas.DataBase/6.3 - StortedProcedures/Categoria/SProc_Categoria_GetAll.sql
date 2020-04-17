@@ -4,7 +4,10 @@ As
 
 	SELECT	[Id]
 			,[Codigo]
-			,[Nome]
+			,[Titulo]
+			,[Descricao]
 			,[Ativo]
 			,[DataCadastro]
 	FROM	[dbo].[tblCategorias] (nolock)
+	WHERE	[Excluido] = 0
+	AND		[Ativo] = 1

@@ -1,7 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].SProc_Categoria_Update
 (
    @Id smallint ,
-	@Nome varchar(128),
+	@Titulo varchar(128),
+	@Descricao varchar(512),
 	@Codigo uniqueidentifier ,
 	@Ativo bit ,
 	@DataUltimaAlteracao datetime
@@ -9,7 +10,8 @@
 As
 
 UPDATE tblCategorias SET
-   	Nome = @Nome,
+   	Titulo = @Titulo,
+	Descricao = @Descricao,
 	Codigo = @Codigo,
 	Ativo = @Ativo,
 	DataUltimaAlteracao = @DataUltimaAlteracao

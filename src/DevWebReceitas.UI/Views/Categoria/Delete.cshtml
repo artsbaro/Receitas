@@ -6,27 +6,35 @@
 
 <h1>Excluir</h1>
 
+<h3 class="alert-danger">Confirma a exclusão?</h3>
 <div>
     <h4>Categoria</h4>
     <hr />
     <form asp-action="Delete">
         <dl class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Codigo)
+                @*@Html.DisplayNameFor(model => model.Codigo)*@
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Codigo)
+                @*@Html.DisplayFor(model => model.Codigo)*@
                 <input type="hidden" asp-for="Codigo" class="form-control" />
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayNameFor(model => model.Titulo)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Nome)
+                @Html.DisplayFor(model => model.Titulo)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Descricao)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Descricao)
             </dd>
         </dl>
 
         <input type="submit" value="Excluir" class="btn btn-danger" /> |
-        <a asp-action="Index">Voltar a lista</a>
+        <a asp-action="Index">Voltar para lista</a>
     </form>
 </div>

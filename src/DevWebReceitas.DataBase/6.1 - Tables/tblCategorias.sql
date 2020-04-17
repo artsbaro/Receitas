@@ -1,8 +1,10 @@
 ﻿CREATE TABLE [dbo].[tblCategorias] (
     [Id] smallint identity(1,1) NOT NULL,
 	[Codigo] uniqueidentifier NOT NULL,
-	[Nome] varchar(128),
+	[Titulo] varchar(128),
+	[Descricao] varchar(512),
 	[Ativo] bit NOT NULL,
+	[Excluido] bit NOT NULL DEFAULT 0,
 	[DataCadastro] datetime NOT NULL,
 	[DataUltimaAlteracao] datetime NULL, 
     CONSTRAINT [PK_Categoria] PRIMARY KEY ([Id]),

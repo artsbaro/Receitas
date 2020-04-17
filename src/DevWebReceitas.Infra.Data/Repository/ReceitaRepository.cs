@@ -132,7 +132,7 @@ namespace DevWebReceitas.Infra.Data.Repository
                 Categoria = new Categoria { 
                     Id = obj.CategoriaId, 
                     Codigo = obj.CategoriaCodigo, 
-                    Nome = obj.CategoriaNome },
+                    Titulo = obj.CategoriaTitulo },
                 Ativo = obj.Ativo,
                 DataCadastro = obj.DataCadastro,
             };

@@ -9,6 +9,7 @@
     [NomeArquivo] varchar(100) NULL DEFAULT '',
     [CategoriaId] smallint NULL,
 	[Ativo] bit NOT NULL,
+    [Excluido] bit NOT NULL DEFAULT 0,
 	[DataCadastro] datetime NOT NULL,
     [DataUltimaAlteracao] DATETIME NULL, 
     CONSTRAINT [PK_Receita] PRIMARY KEY ([Id]), 

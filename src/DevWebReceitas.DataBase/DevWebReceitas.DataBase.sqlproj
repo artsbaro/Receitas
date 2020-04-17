@@ -85,4 +85,7 @@
   <ItemGroup>
     <None Include="DevWebReceitas.DataBase.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DevWebReceitas.DataBase.refactorlog" />
+  </ItemGroup>
 </Project>

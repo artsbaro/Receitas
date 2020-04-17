@@ -23,7 +23,8 @@ namespace DevWebReceitas.Infra.Data.Repository
                 param: new
                 {
                     entity.Codigo,
-                    entity.Nome,                 
+                    entity.Titulo,
+                    entity.Descricao,
                     entity.Ativo,
                     entity.DataCadastro
                 }
@@ -94,7 +95,8 @@ namespace DevWebReceitas.Infra.Data.Repository
                 commandType: CommandType.StoredProcedure,
                 param: new {
                     entity.Id,
-                    entity.Nome,
+                    entity.Titulo,
+                    entity.Descricao,
                     entity.Codigo,
                     entity.Ativo,
                     entity.DataUltimaAlteracao
