@@ -37,7 +37,7 @@
                     @Html.DisplayFor(modelItem => item.Descricao)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { codigo = item.Codigo }) |
+                    @Html.ActionLink("Editar", "Edit", new { codigo = item.Codigo, @class = "btn btn-primary" }) |
                     @Html.ActionLink("Detalhes", "Details", new { codigo = item.Codigo }) |
                     @Html.ActionLink("Excluir", "Delete", new { codigo = item.Codigo })
                 </td>

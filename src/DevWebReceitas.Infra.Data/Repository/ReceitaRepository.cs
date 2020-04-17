@@ -88,9 +88,14 @@ namespace DevWebReceitas.Infra.Data.Repository
         public IEnumerable<Receita> List(ReceitaFilter filter)
         {
             var result = Connection.Query(
-           "SProc_Receita_GetAll",
-           commandType: CommandType.StoredProcedure);
-
+           "SProc_Receita_GetByFilter",
+           commandType: CommandType.StoredProcedure,
+           param: new { filter.Titulo, 
+                        filter.Descricao,
+                        filter.Ingredientes,
+                        filter.ModoPreparo,
+                        filter.TituloCategoria
+           });
             return MapFromDB(result);
         }
 

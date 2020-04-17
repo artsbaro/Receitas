@@ -67,7 +67,7 @@
   <ItemGroup>
     <Build Include="6.1 - Tables\tblReceitas.sql" />
     <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_Insert.sql" />
-    <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_GetAll.sql" />
+    <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_GetByFilter.sql" />
     <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_Delete.sql" />
     <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_GetById.sql" />
     <Build Include="6.3 - StortedProcedures\Receita\SProc_Receita_Update.sql" />
