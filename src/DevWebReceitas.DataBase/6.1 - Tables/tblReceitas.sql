@@ -8,6 +8,8 @@
     [CaminhoImagem] varchar(256) NULL DEFAULT '',
     [NomeArquivo] varchar(100) NULL DEFAULT '',
     [CategoriaId] smallint NULL,
+    [Likes] int DEFAULT 0,
+    [DisLikes] int DEFAULT 0,
 	[Ativo] bit NOT NULL,
     [Excluido] bit NOT NULL DEFAULT 0,
 	[DataCadastro] datetime NOT NULL,

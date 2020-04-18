@@ -142,5 +142,47 @@ namespace DevWebReceitas.Services.Api.Controllers
                 return StatusCode(500, new Error(ex));
             }
         }
+
+        [HttpPut("{codigoReceita}/Like")]
+        [ProducesResponseType(typeof(ReceitaDto), 200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> Like(Guid codigoReceita)
+        {
+            try
+            {
+                _service.Like(codigoReceita);
+                return Ok();
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(new Error(ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new Error(ex));
+            }
+        }
+
+        [HttpPut("{codigoReceita}/Dislike")]
+        [ProducesResponseType(typeof(ReceitaDto), 200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> Dislike(Guid codigoReceita)
+        {
+            try
+            {
+                _service.Dislike(codigoReceita);
+                return Ok();
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(new Error(ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new Error(ex));
+            }
+        }
     }
 }

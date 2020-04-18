@@ -121,6 +121,30 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
+        public void Like(int id)
+        {
+            Connection.Execute(
+                "SProc_Receita_Like",
+                commandType: CommandType.StoredProcedure,
+                param: new
+                {
+                    Id = id
+                }
+            );
+        }
+
+        public void Dislike(int id)
+        {
+            Connection.Execute(
+                "SProc_Receita_Dislike",
+                commandType: CommandType.StoredProcedure,
+                param: new
+                {
+                    Id = id
+                }
+            );
+        }
+
         #region Map
         public Receita MapFromDB(dynamic obj)
         {
@@ -134,6 +158,8 @@ namespace DevWebReceitas.Infra.Data.Repository
                 NomeArquivo = obj.NomeArquivo,
                 CaminhoImagem = obj.CaminhoImagem,
                 Ingredientes = obj.Ingredientes,
+                Likes = obj.Likes,
+                DisLikes = obj.DisLikes,
                 Categoria = new Categoria { 
                     Id = obj.CategoriaId, 
                     Codigo = obj.CategoriaCodigo, 

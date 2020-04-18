@@ -13,11 +13,7 @@ namespace DevWebReceitas.Domain.Services.Interfaces
         IEnumerable<Receita> List(ReceitaFilter filter);
         Receita FindByCode(Guid code);
         byte[] FindImageByCode(Guid code);
-
-        //Task CreateAsync(Receita entity);
-        //Task UpdateAsync(Receita entity);
-        //Task RemoveAsync(Guid id);
-        //Task<IEnumerable<Receita>> ListAsync(ReceitaFilter filter);
-        //Task<Receita> FindByIdAsync(Guid id);
+        void Like(Guid codigo);
+        void Dislike(Guid codigo);
     }
 }

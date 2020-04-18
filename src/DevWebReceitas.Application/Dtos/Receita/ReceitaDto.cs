@@ -36,6 +36,10 @@ namespace DevWebReceitas.Application.Dtos.Receita
         public string Ingredientes { get; set; }
 
         public IFormFile Imagem { get; set; }
+
+        public int Likes { get; set; }
+
+        public int Dislikes { get; set; }
     }
 }
 

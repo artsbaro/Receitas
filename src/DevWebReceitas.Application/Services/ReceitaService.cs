@@ -105,6 +105,17 @@ namespace DevWebReceitas.Application.Services
             _service.Update(objPersistencia);
         }
 
+
+        public void Like(Guid codigo)
+        {
+            _service.Like(codigo);
+        }
+
+        public void Dislike(Guid codigo)
+        {
+            _service.Dislike(codigo);
+        }
+
         public void Dispose()
         {
             GC.SuppressFinalize(this);

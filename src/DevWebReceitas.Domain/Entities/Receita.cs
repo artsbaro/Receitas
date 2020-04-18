@@ -14,6 +14,8 @@ namespace DevWebReceitas.Domain.Entities
         public string CaminhoImagem { get; set; }
         public string NomeArquivo { get; set; }
         public bool Excluido { get; set; }
+        public int Likes { get; set; }
+        public int DisLikes { get; set; }
 
         public bool HasImage
         {

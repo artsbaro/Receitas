@@ -11,17 +11,25 @@ namespace DevWebReceitas.UI.Controllers
     {
         private readonly IReceitaService _service;
         private readonly ICategoriaService _categService;
-        
+
         public ReceitaController(IReceitaService service, ICategoriaService categService)
         {
             _service = service;
             _categService = categService;
         }
 
+
         // GET: Receita
-        public ActionResult Index()
+        public ActionResult Index(string titulo, string descricao, string modoPreparo, string ingredientes, string categoria)
         {
-            var receitas = _service.List(new Domain.Filters.ReceitaFilter());
+            var receitas = _service.List(new Domain.Filters.ReceitaFilter
+            {
+                Titulo = titulo,
+                Descricao = descricao,
+                ModoPreparo = modoPreparo,
+                Ingredientes = ingredientes,
+                TituloCategoria = categoria
+            });
             return View(receitas);
         }
 
@@ -42,7 +50,7 @@ namespace DevWebReceitas.UI.Controllers
         // GET: Receita/Create
         public ActionResult Create()
         {
-            var categorias =_categService.List(new Domain.Filters.CategoriaFilter());
+            var categorias = _categService.List(new Domain.Filters.CategoriaFilter());
             if (categorias.ToList().Count == 0)
             {
                 ModelState.AddModelError("Error", "Para incluir receitas é necessário existirem categorias.");
@@ -57,7 +65,7 @@ namespace DevWebReceitas.UI.Controllers
         public ActionResult Create(ReceitaInsertDto dto)
         {
             try
-            {    
+            {
                 _service.Create(dto);
                 return RedirectToAction(nameof(Index));
             }
@@ -71,7 +79,7 @@ namespace DevWebReceitas.UI.Controllers
         public ActionResult Edit(Guid codigo)
         {
             var receita = _service.FindByCodeEditDto(codigo);
-            
+
             var categorias = new SelectList(
                 _categService.List(new Domain.Filters.CategoriaFilter()),
                 "Codigo", "Titulo", receita.Codigo);
@@ -111,7 +119,7 @@ namespace DevWebReceitas.UI.Controllers
             {
                 ViewBag.Imagem = _service.FindImageByCode(codigo);
             }
-            catch(Exception)
+            catch (Exception)
             {
             }
             return View(receita);
@@ -126,6 +134,39 @@ namespace DevWebReceitas.UI.Controllers
             {
                 _service.Remove(receita.Codigo);
                 return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Like(Guid codigo, string redirectTo)
+        {
+            try
+            {
+                _service.Like(codigo);
+
+                if (redirectTo.Equals("Details", StringComparison.OrdinalIgnoreCase))
+                    return RedirectToAction("Details", new { codigo });
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Dislike(Guid codigo, string redirectTo)
+        {
+            try
+            {
+                _service.Dislike(codigo);
+                if (redirectTo.Equals("Details", StringComparison.OrdinalIgnoreCase))
+                    return RedirectToAction("Details", new { codigo });
+
+                return RedirectToAction("Index");
             }
             catch
             {

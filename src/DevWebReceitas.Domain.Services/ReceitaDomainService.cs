@@ -145,6 +145,23 @@ namespace DevWebReceitas.Domain.Services
             
         }
 
+        public void Like(Guid codigo)
+        {
+            var receita = FindByCode(codigo);
+            if (receita == null)
+                throw new ArgumentException("Receita não encontrada");
+
+            _receitaRepository.Like(receita.Id);
+        }
+
+        public void Dislike(Guid codigo)
+        {
+            var receita = FindByCode(codigo);
+            if (receita == null)
+                throw new ArgumentException("Receita não encontrada");
+
+            _receitaRepository.Dislike(receita.Id);
+        }
     }
 }
 

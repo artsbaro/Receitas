@@ -17,6 +17,8 @@ As
         ,C.Codigo as  CategoriaCodigo
         ,C.[Titulo] as CategoriaTitulo
 	    ,R.[Ativo] 
+        ,R.Likes
+        ,R.DisLikes
 	    ,R.[DataCadastro] 
         ,R.[DataUltimaAlteracao] 
  FROM   dbo.tblReceitas R (nolock) 

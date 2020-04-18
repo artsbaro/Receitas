@@ -5,15 +5,27 @@
 }
 
 <h1>Categorias</h1>
+
+<form asp-action="Index" method="post">
+    <div class="row form-group">
+        <div class="col-sm-3">
+            <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Titulo" />
+        </div>
+        <div class="col-sm-3">
+            <input type="text" name="descricao" id="descricao" class="form-control" placeholder="Descricao" />
+        </div>
+        <div class="col-sm-1">
+            <input type="submit" value="Filtrar" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
 <p>
-    <a asp-action="Create">Incluir</a>
+    <a asp-action="Create" class="btn btn-primary">Novo</a>
 </p>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Codigo)
-                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Titulo)
             </th>
@@ -37,9 +49,10 @@
                     @Html.DisplayFor(modelItem => item.Descricao)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { codigo = item.Codigo, @class = "btn btn-primary" }) |
-                    @Html.ActionLink("Detalhes", "Details", new { codigo = item.Codigo }) |
-                    @Html.ActionLink("Excluir", "Delete", new { codigo = item.Codigo })
+                    @Html.ActionLink("Editar", "Edit", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-warning" }) |
+                    @Html.ActionLink("Detalhes", "Details", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-info" }) |
+                    @Html.ActionLink("Excluir", "Delete", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-danger" })
+
                 </td>
             </tr>
         }

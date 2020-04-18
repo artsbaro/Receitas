@@ -3,9 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace DevWebReceitas.Application.Dtos.Categoria
+namespace DevWebReceitas.UI.Models
 {
-    public class CategoriaDto
+    public class CategoriaViewModel
+    {
+        public IEnumerable<Categoria> Categorias { get; set; }
+        public string SearchTitulo { get; set; }
+        public string SearchDescricao { get; set; }
+
+        public CategoriaViewModel()
+        {
+            
+        }
+    }
+
+    public class Categoria
     {
         [Required(ErrorMessage = "Codigo não preenchido.")]
         public Guid Codigo { get; set; }
@@ -23,3 +35,5 @@ namespace DevWebReceitas.Application.Dtos.Categoria
         public string Descricao { get; set; }
     }
 }
+
+

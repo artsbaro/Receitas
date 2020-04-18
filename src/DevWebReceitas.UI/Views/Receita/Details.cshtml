@@ -56,6 +56,10 @@
     </dl>
 </div>
 <div>
+    <p>
+        @Html.ActionLink("", "Like", new { codigo = Model.Codigo, redirectTo = "Details" }, new { @class = "fa fa-thumbs-up" }) @Model.Likes |
+        @Html.ActionLink("", "Dislike", new { codigo = Model.Codigo, redirectTo = "Details" }, new { @class = "fa fa-thumbs-down" }) @Model.Dislikes
+    </p>
     @Html.ActionLink("Editar", "Edit", new { codigo = Model.Codigo }) |
     <a asp-action="Index">Voltar para lista</a>
 </div>

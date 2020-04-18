@@ -16,5 +16,8 @@ namespace DevWebReceitas.Application.Interfaces
         void Update(ReceitaDto entity);
 
         byte[] FindImageByCode(Guid codigo);
+
+        void Like(Guid codigo);
+        void Dislike(Guid codigo);
     }
 }

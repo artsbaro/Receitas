@@ -8,6 +8,8 @@ namespace DevWebReceitas.Domain.Interfaces.Repositories
     {
         Receita FindByCode(Guid codigo);
         void Remove(Guid codigo);
+        void Like(int id);
+        void Dislike(int id);
     }
 }
 
