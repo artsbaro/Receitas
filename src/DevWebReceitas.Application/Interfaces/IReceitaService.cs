@@ -10,9 +10,14 @@ namespace DevWebReceitas.Application.Interfaces
         Guid Create(ReceitaInsertDto entity);
         void Remove(Guid codigo);
         ReceitaDto FindByCode(Guid codigo);
+        ReceitaEditDto FindByCodeEditDto(Guid codigo);
         IEnumerable<ReceitaDto> List(ReceitaFilter filter);
+        void Update(ReceitaEditDto entity);
         void Update(ReceitaDto entity);
 
         byte[] FindImageByCode(Guid codigo);
+
+        void Like(Guid codigo);
+        void Dislike(Guid codigo);
     }
 }

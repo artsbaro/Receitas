@@ -1,0 +1,90 @@
+﻿@model IEnumerable<DevWebReceitas.Application.Dtos.Receita.ReceitaDto>
+
+@{
+    ViewData["Title"] = "Receitas";
+}
+
+<h1>Receitas</h1>
+
+
+<form asp-action="Index" method="post">
+    <div class="row form-group">
+        <div class="col-sm-2">
+            <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Titulo" />
+        </div>
+        <div class="col-sm-2">
+            <input type="text" name="descricao" id="descricao" class="form-control" placeholder="Descricao" />
+        </div>
+        <div class="col-sm-2">
+            <input type="text" name="ingredientes" id="ingredientes" class="form-control" placeholder="Ingredientes" />
+        </div>
+        <div class="col-sm-2">
+            <input type="text" name="modoPreparo" id="modoPreparo" class="form-control" placeholder="Modo de preparo" />
+        </div>
+        <div class="col-sm-2">
+            <input type="text" name="categoria" id="categoria" class="form-control" placeholder="Categoria" />
+        </div>
+        <div class="col-sm-1">
+            <input type="submit" value="Filtrar" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredientes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModoPreparo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingredientes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModoPreparo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.Titulo)
+                </td>
+                <td>
+
+                    @Html.ActionLink("", "Like", new { codigo = item.Codigo, redirectTo = "Index" }, new { @class = "fa fa-thumbs-up" }) @item.Likes |
+                    @Html.ActionLink("", "Dislike", new { codigo = item.Codigo, redirectTo = "Index" }, new { @class = "fa fa-thumbs-down" }) @item.Dislikes
+                    <p>
+                        @Html.ActionLink("Editar", "Edit", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-warning" }) |
+                        @Html.ActionLink("Detalhes", "Details", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-info" }) |
+                        @Html.ActionLink("Excluir", "Delete", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-danger" })
+                    </p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

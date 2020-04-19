@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using DevWebReceitas.Application.Dtos.Categoria;
 using DevWebReceitas.Application.Interfaces;
+using DevWebReceitas.Application.Mappers.Default;
+using DevWebReceitas.UI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,9 +21,9 @@ namespace DevWebReceitas.UI.Controllers
         }
 
         // GET: Categoria
-        public ActionResult Index()
+        public ActionResult Index(string titulo = null, string descricao = null)
         {
-            var categorias = _service.List(new Domain.Filters.CategoriaFilter());
+            var categorias = _service.List(new Domain.Filters.CategoriaFilter { Titulo = titulo, Descricao = descricao});
             return View(categorias);
         }
 

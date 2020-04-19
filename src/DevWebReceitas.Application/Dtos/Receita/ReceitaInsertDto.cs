@@ -10,12 +10,12 @@ namespace DevWebReceitas.Application.Dtos.Receita
         [Required(ErrorMessage = "Titulo não preenchido.")]
         [MinLength(3, ErrorMessage = "Titulo deve ter mais que 3 caracteres")]
         [MaxLength(150, ErrorMessage = "Titulo deve ter menos que 150 caracteres")]
-        [DisplayName("Titulo")]
+        [DisplayName("Título")]
         public string Titulo { get; set; }
 
         [MinLength(3, ErrorMessage = "Descricao deve ter mais que 3 caracteres")]
         [MaxLength(256, ErrorMessage = "Descricao deve ter menos que 256 caracteres")]
-        [DisplayName("Descricao")]
+        [DisplayName("Descrição")]
         public string Descricao { get; set; }
 
         [MinLength(3, ErrorMessage = "Modo de Preparo deve ter mais que 3 caracteres")]

@@ -23,7 +23,8 @@ namespace DevWebReceitas.Infra.Data.Repository
                 param: new
                 {
                     entity.Codigo,
-                    entity.Nome,                 
+                    entity.Titulo,
+                    entity.Descricao,
                     entity.Ativo,
                     entity.DataCadastro
                 }
@@ -37,9 +38,9 @@ namespace DevWebReceitas.Infra.Data.Repository
                "SProc_Categoria_GetById",
                commandType: CommandType.StoredProcedure,
                 param: new
-               {
-                   Id = id
-               }
+                {
+                    Id = id
+                }
             );
         }
 
@@ -58,9 +59,13 @@ namespace DevWebReceitas.Infra.Data.Repository
         public IEnumerable<Categoria> List(CategoriaFilter filter)
         {
             return Connection.Query<Categoria>(
-               "SProc_Categoria_GetAll",
-               commandType: CommandType.StoredProcedure
-           );
+               "SProc_Categoria_GetByFilter",
+               commandType: CommandType.StoredProcedure,
+                param: new
+                {
+                    filter.Titulo,
+                    filter.Descricao
+                });
         }
 
         public void Remove(short id)
@@ -92,9 +97,11 @@ namespace DevWebReceitas.Infra.Data.Repository
             Connection.Execute(
                 "SProc_Categoria_Update",
                 commandType: CommandType.StoredProcedure,
-                param: new {
+                param: new
+                {
                     entity.Id,
-                    entity.Nome,
+                    entity.Titulo,
+                    entity.Descricao,
                     entity.Codigo,
                     entity.Ativo,
                     entity.DataUltimaAlteracao

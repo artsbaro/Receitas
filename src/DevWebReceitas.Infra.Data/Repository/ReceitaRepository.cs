@@ -88,9 +88,14 @@ namespace DevWebReceitas.Infra.Data.Repository
         public IEnumerable<Receita> List(ReceitaFilter filter)
         {
             var result = Connection.Query(
-           "SProc_Receita_GetAll",
-           commandType: CommandType.StoredProcedure);
-
+           "SProc_Receita_GetByFilter",
+           commandType: CommandType.StoredProcedure,
+           param: new { filter.Titulo, 
+                        filter.Descricao,
+                        filter.Ingredientes,
+                        filter.ModoPreparo,
+                        filter.TituloCategoria
+           });
             return MapFromDB(result);
         }
 
@@ -116,6 +121,30 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
+        public void Like(int id)
+        {
+            Connection.Execute(
+                "SProc_Receita_Like",
+                commandType: CommandType.StoredProcedure,
+                param: new
+                {
+                    Id = id
+                }
+            );
+        }
+
+        public void Dislike(int id)
+        {
+            Connection.Execute(
+                "SProc_Receita_Dislike",
+                commandType: CommandType.StoredProcedure,
+                param: new
+                {
+                    Id = id
+                }
+            );
+        }
+
         #region Map
         public Receita MapFromDB(dynamic obj)
         {
@@ -129,10 +158,12 @@ namespace DevWebReceitas.Infra.Data.Repository
                 NomeArquivo = obj.NomeArquivo,
                 CaminhoImagem = obj.CaminhoImagem,
                 Ingredientes = obj.Ingredientes,
+                Likes = obj.Likes,
+                DisLikes = obj.DisLikes,
                 Categoria = new Categoria { 
                     Id = obj.CategoriaId, 
                     Codigo = obj.CategoriaCodigo, 
-                    Nome = obj.CategoriaNome },
+                    Titulo = obj.CategoriaTitulo },
                 Ativo = obj.Ativo,
                 DataCadastro = obj.DataCadastro,
             };

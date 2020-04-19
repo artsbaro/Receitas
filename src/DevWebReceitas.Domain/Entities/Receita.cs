@@ -13,10 +13,24 @@ namespace DevWebReceitas.Domain.Entities
         public byte[] Imagem { get; set; }
         public string CaminhoImagem { get; set; }
         public string NomeArquivo { get; set; }
+        public bool Excluido { get; set; }
+        public int Likes { get; set; }
+        public int DisLikes { get; set; }
 
         public bool HasImage
         {
             get { return Imagem?.Length > 0; }
+        }
+
+        private void SetExclusao()
+        {
+            Excluido = true;
+            SetInativo();
+        }
+
+        private void SetInativo()
+        {
+            Ativo = false;
         }
     }
 }

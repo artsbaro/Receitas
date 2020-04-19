@@ -1,41 +1,62 @@
 ﻿@model IEnumerable<DevWebReceitas.Application.Dtos.Categoria.CategoriaDto>
 
 @{
-    ViewData["Title"] = "Lista";
+    ViewData["Title"] = "Categorias";
 }
 
-<h1>Lista</h1>
+<h1>Categorias</h1>
+
+<form asp-action="Index" method="post">
+    <div class="row form-group">
+        <div class="col-sm-3">
+            <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Titulo" />
+        </div>
+        <div class="col-sm-3">
+            <input type="text" name="descricao" id="descricao" class="form-control" placeholder="Descricao" />
+        </div>
+        <div class="col-sm-1">
+            <input type="submit" value="Filtrar" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Novo</a>
 </p>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Codigo)
+                @Html.DisplayNameFor(model => model.Titulo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayNameFor(model => model.Descricao)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Codigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new {  codigo = item.Codigo  }) |
-                @Html.ActionLink("Detalhes", "Details", new { codigo = item.Codigo }) |
-                @Html.ActionLink("Excluir", "Delete", new { codigo = item.Codigo })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-warning" }) |
+                    @Html.ActionLink("Detalhes", "Details", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-info" }) |
+                    @Html.ActionLink("Excluir", "Delete", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-danger" })
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+

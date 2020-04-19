@@ -3,6 +3,7 @@
 	@Id smallint
 )
 As
-	DELETE 
-	FROM	[dbo].[tblCategorias]
+	Update	[dbo].[tblCategorias] SET
+				Ativo	 = 0,
+				Excluido = 1
 	WHERE	[Id] = @Id

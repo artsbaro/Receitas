@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace DevWebReceitas.Domain.Entities
 {
@@ -10,14 +9,13 @@ namespace DevWebReceitas.Domain.Entities
         public virtual DateTime? DataUltimaAlteracao { get; set; }
         public virtual bool Ativo { get; set; }
         public Guid Codigo { get; set; }
-        public string Nome { get; set; }
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
 
         public Categoria()
         {
             DataCadastro = DateTime.Now;
-            Ativo = true;
+            Ativo = true;            
         }
-
-
     }
 }
