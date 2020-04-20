@@ -6,7 +6,11 @@
 
 <h1>Categorias</h1>
 
-<form asp-action="Index" method="post">
+<form asp-action="Index"
+      data-ajax-method="post"
+      data-ajax="true"
+      data-ajax-mode="replace"
+      data-ajax-update="#divListaCategorias">
     <div class="row form-group">
         <div class="col-sm-3">
             <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Titulo" />
@@ -18,45 +22,12 @@
             <input type="submit" value="Filtrar" class="btn btn-primary" />
         </div>
     </div>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Novo</a>
+    </p>
+
+    <partial name="_Categorias" model="Model" />
+
 </form>
-
-<p>
-    <a asp-action="Create" class="btn btn-primary">Novo</a>
-</p>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Titulo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Codigo)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titulo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descricao)
-                </td>
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-warning" }) |
-                    @Html.ActionLink("Detalhes", "Details", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-info" }) |
-                    @Html.ActionLink("Excluir", "Delete", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-danger" })
-
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
 

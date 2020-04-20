@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Services.Api
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.Domain.Services", "src\DevWebReceitas.Domain.Services\DevWebReceitas.Domain.Services.csproj", "{363F7A4C-1840-4A03-B8B6-47B96A5CEE98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevWebReceitas.UI", "src\DevWebReceitas.UI\DevWebReceitas.UI.csproj", "{BEA8667C-5C97-4817-96B2-1DE8722350C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevWebReceitas.UI", "src\DevWebReceitas.UI\DevWebReceitas.UI.csproj", "{BEA8667C-5C97-4817-96B2-1DE8722350C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

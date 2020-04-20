@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DevWebReceitas.UI.Controllers
 {
-    public class CategoriaController : Controller
+    public class CategoriaController : BaseController
     {
         private readonly ICategoriaService _service;
 
@@ -23,7 +23,11 @@ namespace DevWebReceitas.UI.Controllers
         // GET: Categoria
         public ActionResult Index(string titulo = null, string descricao = null)
         {
-            var categorias = _service.List(new Domain.Filters.CategoriaFilter { Titulo = titulo, Descricao = descricao});
+            var categorias = _service.List(new Domain.Filters.CategoriaFilter { Titulo = titulo, Descricao = descricao });
+
+            if (HttpExtensions.IsAjaxRequest(Request))
+                return PartialView("_Categorias", categorias);
+
             return View(categorias);
         }
 
