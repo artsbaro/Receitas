@@ -1,0 +1,23 @@
+﻿@model DevWebReceitas.Application.Dtos.Receita.ReceitaDto
+
+<div id="@string.Concat("LikesDislikes", Model.Codigo)">
+    <a asp-action="Like"
+       asp-route-codigo="@Model.Codigo"
+       asp-route-redirectTo="Index"
+       data-ajax-method="post"
+       data-ajax="true"
+       data-ajax-mode="replace"
+       data-ajax-update="#@string.Concat("LikesDislikes", Model.Codigo)">
+        <i class="fa fa-thumbs-up"></i>
+    </a>@Model.Likes |
+
+    <a asp-action="Dislike"
+       asp-route-codigo="@Model.Codigo"
+       asp-route-redirectTo="Index"
+       data-ajax-method="post"
+       data-ajax="true"
+       data-ajax-mode="replace"
+       data-ajax-update="#@string.Concat("LikesDislikes", Model.Codigo)">
+        <i class="fa fa-thumbs-down"></i>
+    </a>@Model.Dislikes |
+</div>

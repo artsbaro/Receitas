@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DevWebReceitas.UI.Controllers
 {
-    public class ReceitaController : Controller
+    public class ReceitaController : BaseController
     {
         private readonly IReceitaService _service;
         private readonly ICategoriaService _categService;
@@ -30,6 +30,11 @@ namespace DevWebReceitas.UI.Controllers
                 Ingredientes = ingredientes,
                 TituloCategoria = categoria
             });
+
+
+            if (HttpExtensions.IsAjaxRequest(Request))
+                return PartialView("_Receitas", receitas);
+
             return View(receitas);
         }
 
@@ -150,6 +155,11 @@ namespace DevWebReceitas.UI.Controllers
                 if (redirectTo.Equals("Details", StringComparison.OrdinalIgnoreCase))
                     return RedirectToAction("Details", new { codigo });
 
+                var receita = _service.FindByCode(codigo);
+
+                if (HttpExtensions.IsAjaxRequest(Request))
+                    return PartialView("_LikesDislikes", receita);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -165,6 +175,11 @@ namespace DevWebReceitas.UI.Controllers
                 _service.Dislike(codigo);
                 if (redirectTo.Equals("Details", StringComparison.OrdinalIgnoreCase))
                     return RedirectToAction("Details", new { codigo });
+
+                var receita = _service.FindByCode(codigo);
+
+                if (HttpExtensions.IsAjaxRequest(Request))
+                    return PartialView("_LikesDislikes", receita);
 
                 return RedirectToAction("Index");
             }
