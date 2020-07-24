@@ -9,7 +9,7 @@ namespace DevWebReceitas.Domain.Entities
         public virtual DateTime? DataUltimaAlteracao { get; set; }
         public virtual bool Ativo { get; set; }
 
-        public BaseEntity()
+        protected BaseEntity()
         {
             DataCadastro = DateTime.Now;
             Ativo = true;

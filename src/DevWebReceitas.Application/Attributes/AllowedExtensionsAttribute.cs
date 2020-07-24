@@ -19,13 +19,8 @@ namespace DevWebReceitas.Application.Attributes
         {
             var file = value as IFormFile;
             var extension = Path.GetExtension(file.FileName);
-            if (!(file == null))
-            {
-                if (!_Extensions.Contains(extension.ToLower()))
-                {
-                    return new ValidationResult(GetErrorMessage());
-                }
-            }
+            if (!_Extensions.Contains(extension.ToLower()))
+                return new ValidationResult(GetErrorMessage());
 
             return ValidationResult.Success;
         }

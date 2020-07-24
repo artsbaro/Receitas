@@ -21,16 +21,5 @@ namespace DevWebReceitas.Domain.Entities
         {
             get { return Imagem?.Length > 0; }
         }
-
-        private void SetExclusao()
-        {
-            Excluido = true;
-            SetInativo();
-        }
-
-        private void SetInativo()
-        {
-            Ativo = false;
-        }
     }
 }

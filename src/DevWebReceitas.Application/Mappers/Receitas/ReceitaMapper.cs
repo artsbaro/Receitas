@@ -10,8 +10,6 @@ namespace DevWebReceitas.Application.Mappers.Receitas
     {
         public Receita Map(ReceitaInsertDto source)
         {
-            //return TypeConverter.ConvertTo<Receita>(source);
-
             return new Receita
             {
                 Titulo = source.Titulo,

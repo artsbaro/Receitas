@@ -14,7 +14,7 @@ namespace DevWebReceitas.Domain.Services
     {
         private readonly IReceitaRepository _receitaRepository;
         private readonly ICategoriaRepository _categoriaRepository;
-        public static IHostingEnvironment _environment;
+        private static IHostingEnvironment _environment;
 
         public ReceitaDomainService(IReceitaRepository receitaRepository
             , IHostingEnvironment environment
@@ -42,9 +42,9 @@ namespace DevWebReceitas.Domain.Services
             return receita;
         }
 
-        public Receita FindByCode(Guid code)
+        public Receita FindByCode(Guid codigo)
         {
-            var receita = _receitaRepository.FindByCode(code);
+            var receita = _receitaRepository.FindByCode(codigo);
             if (receita == null)
                 throw new ArgumentException("Receita não encontrada");
 

@@ -9,10 +9,10 @@ namespace DevWebReceitas.Domain.Services.Interfaces
     {
         void Create(Receita entity);
         void Update(Receita entity);
-        void Remove(Guid id);
+        void Remove(Guid codigo);
         IEnumerable<Receita> List(ReceitaFilter filter);
-        Receita FindByCode(Guid code);
-        byte[] FindImageByCode(Guid code);
+        Receita FindByCode(Guid codigo);
+        byte[] FindImageByCode(Guid codigo);
         void Like(Guid codigo);
         void Dislike(Guid codigo);
     }

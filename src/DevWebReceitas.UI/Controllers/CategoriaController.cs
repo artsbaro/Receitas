@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using DevWebReceitas.Application.Dtos.Categoria;
 using DevWebReceitas.Application.Interfaces;
-using DevWebReceitas.Application.Mappers.Default;
-using DevWebReceitas.UI.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevWebReceitas.UI.Controllers
@@ -23,19 +18,24 @@ namespace DevWebReceitas.UI.Controllers
         // GET: Categoria
         public ActionResult Index(string titulo = null, string descricao = null)
         {
-            var categorias = _service.List(new Domain.Filters.CategoriaFilter { Titulo = titulo, Descricao = descricao });
+            var categorias =
+            _service.List(
+                new Domain.Filters.CategoriaFilter
+                {
+                    Titulo = titulo,
+                    Descricao = descricao
+                });
 
             if (HttpExtensions.IsAjaxRequest(Request))
                 return PartialView("_Categorias", categorias);
-
             return View(categorias);
         }
 
         // GET: Categoria/Details/XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXXXX
         public ActionResult Details(Guid codigo)
         {
-            var categoria = _service.FindByCode(codigo);
-            return View(categoria);
+            var categoria = Task.Run(() => _service.FindByCode(codigo));
+            return View(categoria.Result);
         }
 
         // GET: Categoria/Create
@@ -63,8 +63,7 @@ namespace DevWebReceitas.UI.Controllers
         // GET: Categoria/Edit/XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXXXX
         public ActionResult Edit(Guid codigo)
         {
-            var categoria = _service.FindByCode(codigo);
-            return View(categoria);
+            return Details(codigo);
         }
 
         // POST: Categoria/Edit/XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXXXX
@@ -86,8 +85,7 @@ namespace DevWebReceitas.UI.Controllers
         // GET: Categoria/Delete/XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXXXX
         public ActionResult Delete(Guid codigo)
         {
-            var categoria = _service.FindByCode(codigo);
-            return View(categoria);
+            return Details(codigo);
         }
 
         // POST: Categoria/Delete/XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXXXX

@@ -22,15 +22,15 @@ namespace DevWebReceitas.UI.Controllers
         // GET: Receita
         public ActionResult Index(string titulo, string descricao, string modoPreparo, string ingredientes, string categoria)
         {
-            var receitas = _service.List(new Domain.Filters.ReceitaFilter
-            {
-                Titulo = titulo,
-                Descricao = descricao,
-                ModoPreparo = modoPreparo,
-                Ingredientes = ingredientes,
-                TituloCategoria = categoria
-            });
-
+            var receitas = _service.List(
+                new Domain.Filters.ReceitaFilter
+                {
+                    Titulo = titulo,
+                    Descricao = descricao,
+                    ModoPreparo = modoPreparo,
+                    Ingredientes = ingredientes,
+                    TituloCategoria = categoria
+                });
 
             if (HttpExtensions.IsAjaxRequest(Request))
                 return PartialView("_Receitas", receitas);
@@ -45,11 +45,12 @@ namespace DevWebReceitas.UI.Controllers
             try
             {
                 ViewBag.Imagem = _service.FindImageByCode(codigo);
+                return View(receita);
             }
-            catch (Exception)
+            catch 
             {
+                return View();
             }
-            return View(receita);
         }
 
         // GET: Receita/Create
@@ -93,11 +94,12 @@ namespace DevWebReceitas.UI.Controllers
             {
                 ViewBag.Imagem = _service.FindImageByCode(codigo);
                 receita.Imagem = ViewBag.Imagem;
+                return View(receita);
             }
-            catch (Exception)
+            catch 
             {
+                return View();
             }
-            return View(receita);
         }
 
         // POST: Receita/Edit/5
@@ -119,15 +121,7 @@ namespace DevWebReceitas.UI.Controllers
         // GET: Receita/Delete/XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXXX
         public ActionResult Delete(Guid codigo)
         {
-            var receita = _service.FindByCode(codigo);
-            try
-            {
-                ViewBag.Imagem = _service.FindImageByCode(codigo);
-            }
-            catch (Exception)
-            {
-            }
-            return View(receita);
+            return Details(codigo);
         }
 
         // POST: Categoria/Delete/XXXXXXX-XXXXXXX-XXXXXXX-XXXXXXXXX
