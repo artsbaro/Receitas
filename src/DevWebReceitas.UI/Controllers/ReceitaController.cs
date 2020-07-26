@@ -49,7 +49,7 @@ namespace DevWebReceitas.UI.Controllers
             }
             catch 
             {
-                return View();
+                return View(receita);
             }
         }
 
@@ -98,7 +98,7 @@ namespace DevWebReceitas.UI.Controllers
             }
             catch 
             {
-                return View();
+                return View(receita);
             }
         }
 

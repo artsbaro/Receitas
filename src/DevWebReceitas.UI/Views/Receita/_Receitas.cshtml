@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DevWebReceitas.Application.Dtos.Receita.ReceitaDto>
 
 <div id="divListaReceitas">
-    <table class="table">
+    <table class="table table-hover table-sm">
         <thead>
             <tr>
                 <th>
@@ -46,9 +46,24 @@
                         <partial name="_LikesDislikes" model="@item" />
 
                         <p>
-                            @Html.ActionLink("Editar", "Edit", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-warning" }) |
-                            @Html.ActionLink("Detalhes", "Details", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-info" }) |
-                            @Html.ActionLink("Excluir", "Delete", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-danger" })
+
+                            <a href="@Url.Action("Edit", "Receita", new { codigo = item.Codigo })"
+                               title="Editar"
+                               class="btn btn-sm btn-warning">
+                                <i class="fa fa-edit"></i>
+                            </a>|
+
+                            <a href="@Url.Action("Details", "Receita", new { codigo = item.Codigo })"
+                               title="Detalhes"
+                               class="btn btn-sm btn-info">
+                                <i class="fa fa-eye"></i>
+                            </a>|
+
+                            <a href="@Url.Action("Delete", "Receita", new { codigo = item.Codigo })"
+                               title="Excluir"
+                               class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash-alt"></i>
+                            </a>
                         </p>
                     </td>
                 </tr>
