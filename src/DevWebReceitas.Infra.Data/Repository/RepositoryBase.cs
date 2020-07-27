@@ -9,42 +9,30 @@ namespace DevWebReceitas.Infra.Data.Repository
     {
         internal const string CONNECTIONSTRING_KEY = "DefaultConnection";
 
-        private IDbConnection connection;
-        internal IDbConnection Connection
-        {
-            get
-            {
-                return connection;
-            }
+        internal IDbConnection Connection { get; set; }
 
-            set
-            {
-                connection = value;
-            }
-        }
-
-        public RepositoryBase(IConfiguration configuration)
+        protected RepositoryBase(IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString(CONNECTIONSTRING_KEY);
             if (string.IsNullOrWhiteSpace(connectionString))
-                throw new ArgumentNullException("Connection string not found");
+                throw new ArgumentNullException(connectionString, "Connection string not found");
             Connection = new SqlConnection(connectionString);
         }
 
-        public IDbTransaction transaction { get; private set; }
+        public IDbTransaction Transaction { get; private set; }
 
 
 
         public void SetTransaction(IDbTransaction transaction)
         {
-            this.transaction = transaction;
-            connection = transaction.Connection;
+            this.Transaction = transaction;
+            Connection = transaction.Connection;
         }
 
         internal void SetConnection(IDbConnection connection)
         {
-            this.connection = connection;
-            transaction = null;
+            this.Connection = connection;
+            Transaction = null;
         }
     }
 }

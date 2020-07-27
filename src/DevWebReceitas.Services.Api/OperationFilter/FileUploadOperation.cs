@@ -16,7 +16,7 @@ namespace DevWebReceitas.Services.Api.OperationFilter
             var formFileParams = context.ApiDescription.ActionDescriptor.Parameters
                                     .Where(x => x.ParameterType.IsAssignableFrom(typeof(IFormFile)))
                                     .Select(x => x.Name)
-                                    .ToList(); ;
+                                    .ToList(); 
 
             var formFileSubParams = context.ApiDescription.ActionDescriptor.Parameters
                 .SelectMany(x => x.ParameterType.GetProperties())

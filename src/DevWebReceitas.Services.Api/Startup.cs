@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using DevWebReceitas.Infra.CrossCutting.IoC;
 using Swashbuckle.AspNetCore.Swagger;
 using Newtonsoft.Json;
-using DevWebReceitas.Services.Api.OperationFilter;
 using Microsoft.AspNetCore.ResponseCompression;
 
 namespace DevWebReceitas.Services.Api
@@ -18,14 +17,6 @@ namespace DevWebReceitas.Services.Api
 
         public Startup(IConfiguration configuration)
         {
-            //var builder = new ConfigurationBuilder()
-            //.SetBasePath(env.ContentRootPath)
-            //.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-            //.AddEnvironmentVariables();
-
-            //Configuration = builder.Build();
-
             Configuration = configuration;
         }
 
@@ -46,12 +37,6 @@ namespace DevWebReceitas.Services.Api
                 });
             });
 
-            //services.AddDistributedRedisCache(options =>
-            //{
-            //    options.Configuration = Configuration.GetConnectionString("RedisConnection");
-            //    options.InstanceName = "Ingredientes:";
-            //});
-
             services
                 .AddMvc(options =>
                 { options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter()); })
@@ -71,10 +56,8 @@ namespace DevWebReceitas.Services.Api
                     Title = "DevWebReceitas Project",
                     Description = "DevWebReceitas API Swagger surface"
                 });
-                //s.OperationFilter<FileUploadOperation>(); //Register File Upload Operation Filter
             });
 
-            // .NET Native DI Abstraction
             RegisterServices(services);
         }
 
@@ -100,7 +83,6 @@ namespace DevWebReceitas.Services.Api
                 }); 
             }
 
-            //app.UseStaticFiles();
             app.UseResponseCompression();
             app.UseCors(MyAllowSpecificOrigins);
 

@@ -7,10 +7,10 @@ namespace DevWebReceitas.Application.Interfaces
 {
     public interface ICategoriaService
     {
-        Guid Create(CategoriaInsertDto entity);
+        Guid Create(CategoriaInsertDto dto);
         void Remove(Guid codigo);
         CategoriaDto FindByCode(Guid codigo);
         IEnumerable<CategoriaDto> List(CategoriaFilter filter);
-        void Update(CategoriaDto entity);
+        void Update(CategoriaDto dto);
     }
 }

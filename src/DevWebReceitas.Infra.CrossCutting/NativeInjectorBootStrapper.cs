@@ -10,13 +10,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DevWebReceitas.Infra.CrossCutting.IoC
 {
-    public class NativeInjectorBootStrapper
+    public static class NativeInjectorBootStrapper
     {
         public static void RegisterServices(IServiceCollection services)
         {
             // ASP.NET HttpContext dependency
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //services.AddSingleton<IHostingEnvironment>(new HostingEnvironment());
 
             // Mappers
             services.AddSingleton<IReceitaEditDtoMapper, ReceitaEditDtoMapper>();
@@ -34,8 +33,6 @@ namespace DevWebReceitas.Infra.CrossCutting.IoC
             // Infra - Data
             services.AddScoped<IReceitaRepository, ReceitaRepository>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
-            //services.AddScoped<IUnitOfWork, UnitOfWork>();
-            //services.AddScoped<IUnitOfWorkTransaction, UnitOfWorkTransaction>();
         }
     }
 }

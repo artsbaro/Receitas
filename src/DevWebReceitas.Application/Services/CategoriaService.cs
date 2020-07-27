@@ -9,7 +9,7 @@ using DevWebReceitas.Domain.Services.Interfaces;
 
 namespace DevWebReceitas.Application.Services
 {
-    public class CategoriaService : ICategoriaService, IDisposable
+    public class CategoriaService : ICategoriaService
     {
         private readonly ICategoriaDomainService _service;
 
@@ -18,9 +18,9 @@ namespace DevWebReceitas.Application.Services
             _service = service;
         }
 
-        public Guid Create(CategoriaInsertDto entity)
+        public Guid Create(CategoriaInsertDto dto)
         {
-            var objPersistencia = TypeConverter.ConvertTo<Categoria>(entity);
+            var objPersistencia = TypeConverter.ConvertTo<Categoria>(dto);
             objPersistencia.Codigo = Guid.NewGuid();
             _service.Create(objPersistencia);
             return objPersistencia.Codigo;
@@ -43,14 +43,9 @@ namespace DevWebReceitas.Application.Services
             return TypeConverter.ConvertTo<CategoriaDto>(Categoria);
         }
 
-        public void Update(CategoriaDto entity)
+        public void Update(CategoriaDto dto)
         {
-            _service.Update(TypeConverter.ConvertTo<Categoria>(entity));
-        }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
+            _service.Update(TypeConverter.ConvertTo<Categoria>(dto));
         }
     }
 }

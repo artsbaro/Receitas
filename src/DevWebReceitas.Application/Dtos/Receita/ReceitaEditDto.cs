@@ -1,5 +1,4 @@
-﻿using DevWebReceitas.Application.Dtos.Categoria;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -11,8 +10,6 @@ namespace DevWebReceitas.Application.Dtos.Receita
         [Required(ErrorMessage = "Codigo não preenchido.")]
         public Guid Codigo { get; set; }
 
-        //[Required(ErrorMessage = "Categoria não preenchido.")]
-        //public CategoriaDto Categoria { get; set; }
         [Required(ErrorMessage = "Codigo da Categoria não preenchido.")]
         public Guid CodigoCategoria { get; set; }
 

@@ -30,7 +30,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         {
             try
             {
-                var code = _service.Create(item);
+                var code = await Task.Run(() => _service.Create(item));
                 return CreatedAtAction(nameof(Find), new { code });
             }
             catch (ArgumentException ex)
@@ -52,7 +52,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         {
             try
             {
-                _service.Update(item);
+                await Task.Run(() => _service.Update(item));
                 return Ok();
             }
             catch (ArgumentException ex)
@@ -72,7 +72,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         {
             try
             {
-                _service.Remove(codigo);
+                await Task.Run(() => _service.Remove(codigo));
                 return Ok();
             }
             catch (ArgumentException ex)
@@ -92,8 +92,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         {
             try
             {
-                var result = _service.List(filter);
-                return Ok(result);
+                return Ok(await Task.Run(() => _service.List(filter)));
             }
             catch (Exception ex)
             {
@@ -110,7 +109,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         {
             try
             {
-                return Ok(_service.FindByCode(codigo));
+                return Ok(await Task.Run(() => _service.FindByCode(codigo)));
             }
             catch (ArgumentException ex)
             {
@@ -130,7 +129,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         {
             try
             {
-                byte[] img = _service.FindImageByCode(codigoReceita);
+                byte[] img = await Task.Run(() => _service.FindImageByCode(codigoReceita));
                 return File(img, "image/png");
             }
             catch (ArgumentException ex)
@@ -151,7 +150,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         {
             try
             {
-                _service.Like(codigoReceita);
+                await Task.Run(() => _service.Like(codigoReceita));
                 return Ok();
             }
             catch (ArgumentException ex)
@@ -172,7 +171,7 @@ namespace DevWebReceitas.Services.Api.Controllers
         {
             try
             {
-                _service.Dislike(codigoReceita);
+                await Task.Run(() => _service.Dislike(codigoReceita));
                 return Ok();
             }
             catch (ArgumentException ex)

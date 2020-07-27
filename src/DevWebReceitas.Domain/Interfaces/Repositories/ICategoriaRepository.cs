@@ -8,7 +8,7 @@ namespace DevWebReceitas.Domain.Interfaces.Repositories
     {
         Categoria FindById(short id);
         void Remove(short id);
-        void Remove(Guid codido);
-        Categoria FindByCode(Guid codido);
+        void Remove(Guid codigo);
+        Categoria FindByCode(Guid codigo);
     }
 }

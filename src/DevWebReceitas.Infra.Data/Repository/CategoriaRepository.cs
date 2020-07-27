@@ -44,14 +44,14 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
-        public Categoria FindByCode(Guid code)
+        public Categoria FindByCode(Guid codigo)
         {
             return Connection.QueryFirstOrDefault<Categoria>(
                "SProc_Categoria_GetByCode",
                commandType: CommandType.StoredProcedure,
                 param: new
                 {
-                    Codigo = code
+                    Codigo = codigo
                 }
             );
         }
@@ -80,14 +80,14 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
-        public void Remove(Guid code)
+        public void Remove(Guid codigo)
         {
             Connection.Execute(
                 "SProc_Categoria_Delete",
                 commandType: CommandType.StoredProcedure,
                 param: new
                 {
-                    Codigo = code
+                    Codigo = codigo
                 }
             );
         }

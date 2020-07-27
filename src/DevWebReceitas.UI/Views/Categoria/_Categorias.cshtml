@@ -18,9 +18,6 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.Codigo)
-                        </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Titulo)
                     </td>
@@ -28,9 +25,24 @@
                         @Html.DisplayFor(modelItem => item.Descricao)
                     </td>
                     <td>
-                        @Html.ActionLink("Editar", "Edit", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-warning" }) |
-                        @Html.ActionLink("Detalhes", "Details", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-info" }) |
-                        @Html.ActionLink("Excluir", "Delete", new { codigo = item.Codigo }, new { @class = "btn btn-sm btn-danger" })
+
+                        <a href="@Url.Action("Edit", "Categoria", new { codigo = item.Codigo })"
+                           title="Editar"
+                           class="btn btn-sm btn-warning">
+                            <i class="fa fa-edit"></i>
+                        </a>|
+
+                        <a href="@Url.Action("Details", "Categoria", new { codigo = item.Codigo })"
+                           title="Detalhes"
+                           class="btn btn-sm btn-info">
+                            <i class="fa fa-eye"></i>
+                        </a>|
+
+                        <a href="@Url.Action("Delete", "Categoria", new { codigo = item.Codigo })"
+                           title="Excluir"
+                           class="btn btn-sm btn-danger">
+                            <i class="fa fa-trash-alt"></i>
+                        </a>
 
                     </td>
                 </tr>

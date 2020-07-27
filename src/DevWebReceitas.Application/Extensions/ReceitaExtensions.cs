@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace DevWebReceitas.Application.Extensions
 {
@@ -12,7 +9,7 @@ namespace DevWebReceitas.Application.Extensions
         {
             if (image == null)
             {
-                return null;
+                return new byte[] { };
             }
             using (var inputStream = image.OpenReadStream())
             using (var stream = new MemoryStream())
