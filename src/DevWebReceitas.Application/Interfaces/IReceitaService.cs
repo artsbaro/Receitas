@@ -5,11 +5,10 @@ using System.Collections.Generic;
 
 namespace DevWebReceitas.Application.Interfaces
 {
-    public interface IReceitaService
+    public interface IReceitaService : IServiceBase<ReceitaDto>
     {
         Guid Create(ReceitaInsertDto dto);
         void Remove(Guid codigo);
-        ReceitaDto FindByCode(Guid codigo);
         ReceitaEditDto FindByCodeEditDto(Guid codigo);
         IEnumerable<ReceitaDto> List(ReceitaFilter filter);
         void Update(ReceitaEditDto dto);

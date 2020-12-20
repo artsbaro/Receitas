@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="NetCore.AutoRegisterDi" Version="2.1.0" />
     <PackageReference Include="Scrutor" Version="3.1.0" />
     <PackageReference Include="SonarAnalyzer.CSharp" Version="8.10.0.19839">
       <PrivateAssets>all</PrivateAssets>
@@ -17,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DevWebReceitas.Application\DevWebReceitas.Application.csproj" />
+    <ProjectReference Include="..\DevWebReceitas.Domain.Services\DevWebReceitas.Domain.Services.csproj" />
     <ProjectReference Include="..\DevWebReceitas.Domain\DevWebReceitas.Domain.csproj" />
     <ProjectReference Include="..\DevWebReceitas.Infra.Data\DevWebReceitas.Infra.Data.csproj" />
   </ItemGroup>

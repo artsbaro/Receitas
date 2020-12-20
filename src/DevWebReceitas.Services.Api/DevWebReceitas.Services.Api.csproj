@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DevWebReceitas.Application\DevWebReceitas.Application.csproj" />
-    <ProjectReference Include="..\DevWebReceitas.Infra.CrossCutting\DevWebReceitas.Infra.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\DevWebReceitas.Infra.Data\DevWebReceitas.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

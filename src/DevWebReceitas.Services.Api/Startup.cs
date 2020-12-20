@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using DevWebReceitas.Infra.CrossCutting.IoC;
 using Swashbuckle.AspNetCore.Swagger;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.ResponseCompression;
