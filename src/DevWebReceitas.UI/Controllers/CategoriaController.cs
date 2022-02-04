@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using DevWebReceitas.Application.Dtos.Categoria;
 using DevWebReceitas.Application.Interfaces;
@@ -112,7 +113,7 @@ namespace DevWebReceitas.UI.Controllers
         /// Exemplo de paralelismo 
         /// </summary>
         /// <returns></returns>
-        private async Task<IEnumerable<CategoriaDto>> GetCategorias()
+        private IEnumerable<CategoriaDto> GetCategorias()
         {
             ConcurrentBag<CategoriaDto> list = new ConcurrentBag<CategoriaDto>();
             var tasks = new Task[]

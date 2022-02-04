@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
-using Newtonsoft.Json;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.Extensions.Hosting;
 
 namespace DevWebReceitas.Services.Api
 {
@@ -39,8 +39,8 @@ namespace DevWebReceitas.Services.Api
             services
                 .AddMvc(options =>
                 { options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter()); })
-                .AddJsonOptions(options => options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore)
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                .AddJsonOptions(options => options.JsonSerializerOptions.IgnoreNullValues = true)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.Configure<GzipCompressionProviderOptions>(
                 o => o.Level = System.IO.Compression.CompressionLevel.Fastest);
@@ -61,7 +61,7 @@ namespace DevWebReceitas.Services.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -84,8 +84,6 @@ namespace DevWebReceitas.Services.Api
 
             app.UseResponseCompression();
             app.UseCors(MyAllowSpecificOrigins);
-
-            app.UseMvc();
         }
 
         private static void RegisterServices(IServiceCollection services)

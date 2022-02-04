@@ -1,7 +1,6 @@
 ﻿namespace DevWebReceitas.Domain.Services.Interfaces
 {
-    public interface IDomainService <T, TCode>
+    public interface IDomainService <out T, in TCode>
     {
-        //T FindByCode(TCode code);
     }
 }
