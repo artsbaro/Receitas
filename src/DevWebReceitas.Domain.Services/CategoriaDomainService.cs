@@ -4,6 +4,7 @@ using DevWebReceitas.Domain.Interfaces.Repositories;
 using DevWebReceitas.Domain.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Transactions;
 
 namespace DevWebReceitas.Domain.Services
@@ -26,9 +27,9 @@ namespace DevWebReceitas.Domain.Services
             }
         }
 
-        public Categoria FindByCode(Guid codigo)
+        public async Task<Categoria> FindByCode(Guid codigo)
         {
-            return _CategoriaRepository.FindByCode(codigo);
+            return await _CategoriaRepository.FindByCode(codigo);
         }
 
         public Categoria FindById(int id)
@@ -57,7 +58,7 @@ namespace DevWebReceitas.Domain.Services
             {
                 var categoria = FindByCode(entity.Codigo);
 
-                entity.Id = categoria.Id;
+                entity.Id = (short)categoria.Id;
                 entity.DataUltimaAlteracao = DateTime.Now;
                 _CategoriaRepository.Update(entity);
                 trans.Complete();

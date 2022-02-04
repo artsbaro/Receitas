@@ -1,0 +1,5 @@
+﻿C:\Projetos\Receitas\src\DevWebReceitas.Infra.Data\Anchor.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Infra.Data\Repository\CategoriaRepository.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Infra.Data\Repository\ReceitaRepository.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Infra.Data\Repository\RepositoryBase.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Infra.Data\appsettings.json

@@ -1,0 +1,25 @@
+e
+\C:\Projetos\Receitas\src\DevWebReceitas.Application\Attributes\AllowedExtensionsAttribute.csutf-8_
+VC:\Projetos\Receitas\src\DevWebReceitas.Application\Attributes\MaxFileSizeAttribute.csutf-8[
+RC:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Categoria\CategoriaDto.csutf-8a
+XC:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Categoria\CategoriaInsertDto.csutf-8W
+NC:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Receita\ReceitaDto.csutf-8[
+RC:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Receita\ReceitaEditDto.csutf-8]
+TC:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Receita\ReceitaInsertDto.csutf-8S
+JC:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Types\TypeBase.csutf-8\
+SC:\Projetos\Receitas\src\DevWebReceitas.Application\Extensions\ReceitaExtensions.csutf-8\
+SC:\Projetos\Receitas\src\DevWebReceitas.Application\Interfaces\ICategoriaService.csutf-8Z
+QC:\Projetos\Receitas\src\DevWebReceitas.Application\Interfaces\IReceitaService.csutf-8W
+NC:\Projetos\Receitas\src\DevWebReceitas.Application\Interfaces\IServiceBase.csutf-8]
+TC:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Default\TypeConverter.csutf-8O
+FC:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\IMapper.csutf-8b
+YC:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\IReceitaDtoMapper.csutf-8g
+^C:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\IReceitaEditDtoMapper .csutf-8_
+VC:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\IReceitaMapper.csutf-8a
+XC:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\ReceitaDtoMapper.csutf-8e
+\C:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\ReceitaEditDtoMapper.csutf-8^
+UC:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\ReceitaMapper.csutf-8Y
+PC:\Projetos\Receitas\src\DevWebReceitas.Application\Services\CategoriaService.csutf-8W
+NC:\Projetos\Receitas\src\DevWebReceitas.Application\Services\ReceitaService.csutf-8Ö
+zC:\Projetos\Receitas\src\DevWebReceitas.Application\obj\Debug\netcoreapp2.2\.NETCoreApp,Version=v2.2.AssemblyAttributes.csutf-8Å
+vC:\Projetos\Receitas\src\DevWebReceitas.Application\obj\Debug\netcoreapp2.2\DevWebReceitas.Application.AssemblyInfo.csutf-8

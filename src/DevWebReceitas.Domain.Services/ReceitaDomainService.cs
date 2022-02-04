@@ -108,7 +108,7 @@ namespace DevWebReceitas.Domain.Services
             if (categoria == null)
                 throw new ArgumentException("Categoria não encontrada");
 
-            entity.Categoria.Id = categoria.Id;
+            entity.Categoria.Id = (short)categoria.Id;
         }
 
         private static void GravaArquivo(Receita entity)

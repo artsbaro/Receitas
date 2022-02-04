@@ -1,0 +1,12 @@
+N
+EC:\Projetos\Receitas\src\DevWebReceitas.Domain\Entities\BaseEntity.csutf-8M
+DC:\Projetos\Receitas\src\DevWebReceitas.Domain\Entities\Categoria.csutf-8K
+BC:\Projetos\Receitas\src\DevWebReceitas.Domain\Entities\Receita.csutf-8R
+IC:\Projetos\Receitas\src\DevWebReceitas.Domain\Filters\CategoriaFilter.csutf-8P
+GC:\Projetos\Receitas\src\DevWebReceitas.Domain\Filters\ReceitaFilter.csutf-8g
+^C:\Projetos\Receitas\src\DevWebReceitas.Domain\Interfaces\Repositories\ICategoriaRepository.csutf-8e
+\C:\Projetos\Receitas\src\DevWebReceitas.Domain\Interfaces\Repositories\IReceitaRepository.csutf-8^
+UC:\Projetos\Receitas\src\DevWebReceitas.Domain\Interfaces\Repositories\IRepository.csutf-8I
+@C:\Projetos\Receitas\src\DevWebReceitas.Domain\Types\TypeBase.csutf-8€
+uC:\Projetos\Receitas\src\DevWebReceitas.Domain\obj\Debug\netcoreapp2.2\.NETCoreApp,Version=v2.2.AssemblyAttributes.csutf-8w
+lC:\Projetos\Receitas\src\DevWebReceitas.Domain\obj\Debug\netcoreapp2.2\DevWebReceitas.Domain.AssemblyInfo.csutf-8

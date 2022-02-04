@@ -1,0 +1,9 @@
+﻿C:\Projetos\Receitas\src\DevWebReceitas.Domain\Entities\BaseEntity.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain\Entities\Categoria.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain\Entities\Receita.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain\Filters\CategoriaFilter.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain\Filters\ReceitaFilter.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain\Interfaces\Repositories\ICategoriaRepository.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain\Interfaces\Repositories\IReceitaRepository.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain\Interfaces\Repositories\IRepository.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain\Types\TypeBase.cs

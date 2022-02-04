@@ -1,0 +1,5 @@
+﻿C:\Projetos\Receitas\src\DevWebReceitas.Domain.Services\CategoriaDomainService.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain.Services\Interfaces\ICategoriaDomainService.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain.Services\Interfaces\IDomainService.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain.Services\Interfaces\IReceitaDomainService.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Domain.Services\ReceitaDomainService.cs

@@ -14,5 +14,6 @@ namespace DevWebReceitas.Domain.Services.Interfaces
         byte[] FindImageByCode(Guid codigo);
         void Like(Guid codigo);
         void Dislike(Guid codigo);
+        Receita FindByCode(Guid code);
     }
 }

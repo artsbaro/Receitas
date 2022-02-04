@@ -1,0 +1,14 @@
+﻿C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\Controllers\CategoriaController.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\Controllers\ReceitaController.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\Errors\Error.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\NativeInjectorBootStrapper.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\OperationFilter\FileUploadOperation.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\Program.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\Startup.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\obj\Debug\netcoreapp2.2\.NETCoreApp,Version=v2.2.AssemblyAttributes.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\obj\Debug\netcoreapp2.2\DevWebReceitas.Services.Api.AssemblyInfo.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\obj\Debug\netcoreapp2.2\DevWebReceitas.Services.Api.RazorAssemblyInfo.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\wwwroot\Upload\Enciclopedia.jpg
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\appsettings.Development.json
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\appsettings.json
+C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\Properties\launchSettings.json

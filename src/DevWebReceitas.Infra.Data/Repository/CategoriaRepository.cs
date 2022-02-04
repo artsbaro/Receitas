@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace DevWebReceitas.Infra.Data.Repository
 {
@@ -32,9 +33,9 @@ namespace DevWebReceitas.Infra.Data.Repository
         }
 
 
-        public Categoria FindById(short id)
+        public async Task<Categoria> FindById(short id)
         {
-            return Connection.QueryFirstOrDefault<Categoria>(
+            return await Connection.QueryFirstOrDefaultAsync<Categoria>(
                "SProc_Categoria_GetById",
                commandType: CommandType.StoredProcedure,
                 param: new
@@ -44,9 +45,9 @@ namespace DevWebReceitas.Infra.Data.Repository
             );
         }
 
-        public Categoria FindByCode(Guid codigo)
+        public async Task<Categoria> FindByCode(Guid codigo)
         {
-            return Connection.QueryFirstOrDefault<Categoria>(
+            return await Connection.QueryFirstOrDefaultAsync<Categoria>(
                "SProc_Categoria_GetByCode",
                commandType: CommandType.StoredProcedure,
                 param: new

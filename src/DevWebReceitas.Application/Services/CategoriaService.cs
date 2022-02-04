@@ -39,7 +39,7 @@ namespace DevWebReceitas.Application.Services
 
         public CategoriaDto FindByCode(Guid codigo)
         {
-            var Categoria = _service.FindByCode(codigo);
+            var Categoria = _service.FindByCode(codigo).Result;
             return TypeConverter.ConvertTo<CategoriaDto>(Categoria);
         }
 

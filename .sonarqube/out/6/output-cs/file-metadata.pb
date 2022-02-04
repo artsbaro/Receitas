@@ -1,0 +1,13 @@
+Q
+HC:\Projetos\Receitas\src\DevWebReceitas.UI\Controllers\BaseController.csutf-8V
+MC:\Projetos\Receitas\src\DevWebReceitas.UI\Controllers\CategoriaController.csutf-8Q
+HC:\Projetos\Receitas\src\DevWebReceitas.UI\Controllers\HomeController.csutf-8T
+KC:\Projetos\Receitas\src\DevWebReceitas.UI\Controllers\ReceitaController.csutf-8P
+GC:\Projetos\Receitas\src\DevWebReceitas.UI\Models\CategoriaViewModel.csutf-8L
+CC:\Projetos\Receitas\src\DevWebReceitas.UI\Models\ErrorViewModel.csutf-8Q
+HC:\Projetos\Receitas\src\DevWebReceitas.UI\NativeInjectorBootStrapper.csutf-8>
+5C:\Projetos\Receitas\src\DevWebReceitas.UI\Program.csutf-8>
+5C:\Projetos\Receitas\src\DevWebReceitas.UI\Startup.csutf-8|
+qC:\Projetos\Receitas\src\DevWebReceitas.UI\obj\Debug\netcoreapp2.2\.NETCoreApp,Version=v2.2.AssemblyAttributes.csutf-8o
+dC:\Projetos\Receitas\src\DevWebReceitas.UI\obj\Debug\netcoreapp2.2\DevWebReceitas.UI.AssemblyInfo.csutf-8t
+iC:\Projetos\Receitas\src\DevWebReceitas.UI\obj\Debug\netcoreapp2.2\DevWebReceitas.UI.RazorAssemblyInfo.csutf-8

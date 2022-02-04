@@ -2,6 +2,6 @@
 {
     public interface IDomainService <T, TCode>
     {
-        T FindByCode(TCode code);
+        //T FindByCode(TCode code);
     }
 }

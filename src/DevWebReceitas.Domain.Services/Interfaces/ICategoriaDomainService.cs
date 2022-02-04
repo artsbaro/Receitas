@@ -2,6 +2,7 @@
 using DevWebReceitas.Domain.Filters;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DevWebReceitas.Domain.Services.Interfaces
 {
@@ -11,5 +12,6 @@ namespace DevWebReceitas.Domain.Services.Interfaces
         void Update(Categoria entity);
         void Remove(Guid codigo);
         IEnumerable<Categoria> List(CategoriaFilter filter);
+        Task<Categoria> FindByCode(Guid codigo);
     }
 }

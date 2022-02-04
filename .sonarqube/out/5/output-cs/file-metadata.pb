@@ -1,0 +1,11 @@
+`
+WC:\Projetos\Receitas\src\DevWebReceitas.Services.Api\Controllers\CategoriaController.csutf-8^
+UC:\Projetos\Receitas\src\DevWebReceitas.Services.Api\Controllers\ReceitaController.csutf-8M
+DC:\Projetos\Receitas\src\DevWebReceitas.Services.Api\Errors\Error.csutf-8[
+RC:\Projetos\Receitas\src\DevWebReceitas.Services.Api\NativeInjectorBootStrapper.csutf-8d
+[C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\OperationFilter\FileUploadOperation.csutf-8H
+?C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\Program.csutf-8H
+?C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\Startup.csutf-8†
+{C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\obj\Debug\netcoreapp2.2\.NETCoreApp,Version=v2.2.AssemblyAttributes.csutf-8ƒ
+xC:\Projetos\Receitas\src\DevWebReceitas.Services.Api\obj\Debug\netcoreapp2.2\DevWebReceitas.Services.Api.AssemblyInfo.csutf-8ˆ
+}C:\Projetos\Receitas\src\DevWebReceitas.Services.Api\obj\Debug\netcoreapp2.2\DevWebReceitas.Services.Api.RazorAssemblyInfo.csutf-8

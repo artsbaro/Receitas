@@ -1,0 +1,1 @@
+Roslyn version: 4.0.0.0Language version: CSharp7_3"Concurrent execution: disabled°«File 'C:\Projetos\Receitas\src\DevWebReceitas.Infra.CrossCutting\obj\Debug\netcoreapp2.2\DevWebReceitas.Infra.CrossCutting.IoC.AssemblyInfo.cs' was recognized as generated

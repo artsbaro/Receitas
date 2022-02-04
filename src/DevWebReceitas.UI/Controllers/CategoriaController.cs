@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DevWebReceitas.Application.Dtos.Categoria;
 using DevWebReceitas.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using RestSharp;
 
 namespace DevWebReceitas.UI.Controllers
 {
@@ -18,6 +21,7 @@ namespace DevWebReceitas.UI.Controllers
         // GET: Categoria
         public ActionResult Index(string titulo = null, string descricao = null)
         {
+            //var categorias = GetCategorias().Result;
             var categorias =
             _service.List(
                 new Domain.Filters.CategoriaFilter
@@ -102,6 +106,33 @@ namespace DevWebReceitas.UI.Controllers
             {
                 return View();
             }
+        }
+
+        /// <summary>
+        /// Exemplo de paralelismo 
+        /// </summary>
+        /// <returns></returns>
+        private async Task<IEnumerable<CategoriaDto>> GetCategorias()
+        {
+            ConcurrentBag<CategoriaDto> list = new ConcurrentBag<CategoriaDto>();
+            var tasks = new Task[]
+            {
+                Task.Run(() => { list.Add(GetCategoria("8AF4268C-C404-4728-A393-B61878A0015C")); }),
+                Task.Run(() => { list.Add(GetCategoria("DD6C149F-CDB7-47A2-8E8C-9B5259499A0A")); }),
+                Task.Run(() => { list.Add(GetCategoria("96E70766-724A-48BA-A67C-8DBB295C9473")); }),
+                Task.Run(() => { list.Add(GetCategoria("54D3CEFA-ADA6-4188-BF9C-68BB2365C66B")); })
+            };
+
+            Task.WaitAll(tasks);
+            return list;
+        }
+        private CategoriaDto GetCategoria(string code)
+        {
+            var client = new RestClient($"http://localhost:52150/api/Categoria/{code}");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            var response = client.Execute<CategoriaDto>(request);
+            return response.Data;
         }
     }
 }

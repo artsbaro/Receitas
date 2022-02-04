@@ -2,7 +2,7 @@
 
 namespace DevWebReceitas.Application.Interfaces
 {
-    public interface IServiceBase<T>
+    public interface IServiceBase<out T>
     {
         T FindByCode(Guid codigo);
     }

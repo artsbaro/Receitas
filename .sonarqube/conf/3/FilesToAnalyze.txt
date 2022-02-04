@@ -1,0 +1,22 @@
+﻿C:\Projetos\Receitas\src\DevWebReceitas.Application\Attributes\AllowedExtensionsAttribute.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Attributes\MaxFileSizeAttribute.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Categoria\CategoriaDto.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Categoria\CategoriaInsertDto.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Receita\ReceitaDto.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Receita\ReceitaEditDto.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Receita\ReceitaInsertDto.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Dtos\Types\TypeBase.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Extensions\ReceitaExtensions.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Interfaces\ICategoriaService.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Interfaces\IReceitaService.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Interfaces\IServiceBase.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Default\TypeConverter.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\IMapper.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\IReceitaDtoMapper.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\IReceitaEditDtoMapper .cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\IReceitaMapper.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\ReceitaDtoMapper.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\ReceitaEditDtoMapper.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Mappers\Receitas\ReceitaMapper.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Services\CategoriaService.cs
+C:\Projetos\Receitas\src\DevWebReceitas.Application\Services\ReceitaService.cs
